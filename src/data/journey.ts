@@ -9,7 +9,8 @@ export type JourneySceneMeta = {
 
 /**
  * Scene order from PROJECT_SPEC.md.
- * Scenes 1–3 content are approved; Scene 4 is draft (owner review).
+ * Scene 5 (secret) is skipped in navigation for now — content still pending.
+ * Scene 6 finale content + voice are owner-approved.
  */
 export const journeyScenes: JourneySceneMeta[] = [
   {
@@ -40,6 +41,6 @@ export const journeyScenes: JourneySceneMeta[] = [
   {
     id: 'finale',
     title: 'مشهد أخير: حاجة لسه هتكبر',
-    contentStatus: 'needs-owner-input',
+    contentStatus: 'approved',
   },
 ]

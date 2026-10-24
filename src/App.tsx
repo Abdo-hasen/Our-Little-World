@@ -4,6 +4,7 @@ import { Scene1Key } from './features/journey/scenes/Scene1Key'
 import { Scene2Timeline } from './features/journey/scenes/Scene2Timeline'
 import { Scene3Qualities } from './features/journey/scenes/Scene3Qualities'
 import { Scene4Messages } from './features/journey/scenes/Scene4Messages'
+import { Scene6Finale } from './features/journey/scenes/Scene6Finale'
 import type { JourneySceneId } from './types/content'
 
 function App() {
@@ -37,6 +38,15 @@ function App() {
           <Scene4Messages
             key="messages"
             onBack={() => setActiveScene('qualities')}
+            /* Scene 5 skipped for now — jump to finale. */
+            onNext={() => setActiveScene('finale')}
+          />
+        )}
+        {activeScene === 'finale' && (
+          <Scene6Finale
+            key="finale"
+            onBack={() => setActiveScene('messages')}
+            onReplayJourney={() => setActiveScene('key')}
           />
         )}
       </AnimatePresence>

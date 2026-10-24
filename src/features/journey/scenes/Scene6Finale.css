@@ -1,0 +1,421 @@
+.scene6 {
+  min-height: 100dvh;
+  position: relative;
+  padding: clamp(1.25rem, 3.5vh, 2rem) 1.15rem 2.5rem;
+  background: var(--bg-deep);
+  overflow-x: hidden;
+}
+
+.scene6__wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 22% 8%, rgba(167, 107, 158, 0.2), transparent 46%),
+    radial-gradient(ellipse at 78% 48%, rgba(201, 164, 108, 0.14), transparent 44%),
+    radial-gradient(ellipse at 50% 92%, rgba(139, 90, 140, 0.12), transparent 38%),
+    linear-gradient(180deg, rgba(228, 213, 232, 0.55) 0%, transparent 38%);
+}
+
+.scene6__container {
+  position: relative;
+  z-index: 1;
+  width: min(34rem, 100%);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.1rem, 3vh, 1.65rem);
+}
+
+.scene6__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.scene6__badge {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.scene6__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.scene6__intro {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.scene6__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: min(12rem, 55%);
+  margin-top: 0.4rem;
+  color: var(--accent-gold);
+}
+
+.scene6__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-gold-soft),
+    transparent
+  );
+}
+
+.scene6__divider-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  box-shadow: 0 0 0 3px var(--accent-gold-soft);
+}
+
+.scene6__garden-card {
+  position: relative;
+  border-radius: 22px;
+  padding: 1rem 1rem 1.15rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(22px) saturate(1.35);
+  box-shadow: 0 12px 36px var(--shadow-soft);
+  overflow: hidden;
+}
+
+.scene6__garden-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85),
+    var(--accent-gold-soft),
+    rgba(167, 107, 158, 0.45)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.scene6__garden {
+  position: relative;
+  height: clamp(11.5rem, 32vw, 14.5rem);
+  border-radius: 16px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(232, 220, 236, 0.35) 0%, transparent 42%),
+    linear-gradient(180deg, #d8c6dc 0%, #c4a8c8 48%, #9a7a72 72%, #7a6258 100%);
+}
+
+.scene6__garden-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 252, 255, 0.35), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(201, 164, 108, 0.18), transparent 26%);
+  animation: scene6-ambient 7s ease-in-out infinite alternate;
+}
+
+.scene6__soil {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28%;
+  background: linear-gradient(
+    180deg,
+    rgba(90, 62, 48, 0) 0%,
+    rgba(90, 62, 48, 0.35) 40%,
+    rgba(72, 50, 40, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.scene6__flowers {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scene6__flower {
+  position: absolute;
+  width: 2.65rem;
+  height: 3.4rem;
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 4px 6px rgba(58, 36, 64, 0.18));
+}
+
+.scene6__flower svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scene6__garden-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.scene6__count {
+  margin: 0.85rem 0 0;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.scene6__plant {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.15rem;
+}
+
+.scene6__plant-btn {
+  position: relative;
+  overflow: hidden;
+  min-height: 3.25rem;
+  min-width: 11rem;
+  padding: 0.8rem 1.9rem;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--btn-start) 0%, var(--btn-end) 100%);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(139, 90, 140, 0.32);
+}
+
+.scene6__plant-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+  box-shadow: none;
+}
+
+.scene6__plant-btn--shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  animation: scene6-shimmer 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.scene6__voice {
+  position: relative;
+  border-radius: 22px;
+  padding: 1.15rem 1.2rem 1.25rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(22px) saturate(1.35);
+  box-shadow: 0 10px 28px var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.scene6__voice::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(167, 107, 158, 0.35),
+    var(--accent-gold-soft)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.scene6__voice-label {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.scene6__voice-missing {
+  margin: 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.scene6__voice-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.scene6__voice-btn {
+  min-height: 2.85rem;
+  min-width: 6.5rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid var(--bg-card-border);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scene6__voice-btn--primary {
+  border: none;
+  background: linear-gradient(135deg, var(--btn-start) 0%, var(--btn-end) 100%);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(139, 90, 140, 0.28);
+}
+
+.scene6__voice-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.scene6__progress {
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: rgba(110, 70, 115, 0.12);
+  overflow: hidden;
+}
+
+.scene6__progress-bar {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent-mauve), var(--accent-gold));
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.scene6__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.scene6__btn {
+  min-height: 3.25rem;
+  min-width: 9.5rem;
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--btn-start) 0%, var(--btn-end) 100%);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(139, 90, 140, 0.32);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scene6__btn:hover {
+  transform: translateY(-2px);
+}
+
+.scene6__btn:active {
+  transform: translateY(0);
+}
+
+.scene6__btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  box-shadow: none;
+  border: 1px solid var(--bg-card-border);
+}
+
+.scene6__btn--ghost:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.scene6__btn--replay {
+  min-width: min(100%, 18rem);
+}
+
+@keyframes scene6-ambient {
+  from {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes scene6-shimmer {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  80%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene6__garden-ambient {
+    animation: none;
+  }
+
+  .scene6__plant-btn--shimmer::after {
+    animation: none;
+    display: none;
+  }
+
+  .scene6__btn:hover {
+    transform: none;
+  }
+}
