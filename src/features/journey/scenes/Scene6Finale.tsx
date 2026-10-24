@@ -19,13 +19,15 @@ type FlowerSpot = {
   rotate: number
 }
 
-/** Deterministic-ish layout so flowers feel planted, not random every render. */
+/** Deterministic layout so up to 100 flowers feel planted, not stacked. */
 function spotForIndex(index: number): Omit<FlowerSpot, 'id'> {
-  const cols = [12, 28, 44, 60, 76, 20, 36, 52, 68, 84, 16, 48, 72, 32, 56, 80]
-  const rows = [10, 14, 18, 22, 12, 20, 16, 24, 11, 19, 15, 23, 13, 21, 17, 25]
-  const left = cols[index % cols.length]!
-  const bottom = rows[index % rows.length]!
-  const scale = 0.82 + ((index * 17) % 25) / 100
+  const col = index % 10
+  const row = Math.floor(index / 10) % 10
+  const jitterX = ((index * 37) % 7) - 3
+  const jitterY = ((index * 53) % 5) - 2
+  const left = Math.min(92, Math.max(6, 8 + col * 9 + jitterX))
+  const bottom = Math.min(40, Math.max(6, 6 + row * 3.4 + jitterY * 0.55))
+  const scale = 0.55 + ((index * 17) % 30) / 100
   const variant = (index % 3) as 0 | 1 | 2
   const rotate = ((index * 13) % 21) - 10
   return { left, bottom, scale, variant, rotate }

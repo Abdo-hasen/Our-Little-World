@@ -16,7 +16,7 @@ export const scene6Content = {
   startEmpty: true,
   /** Voice message unlocks after this many flowers. */
   voiceUnlockAt: 5,
-  maxFlowers: 24,
+  maxFlowers: 100,
   flowerCountLabel: (count: number, unlockAt: number, maxFlowers: number) => {
     if (count === 0) return 'لسه مفيش ورد… ازرعي أول واحدة'
     if (count >= maxFlowers) return 'الحديقة اتملت 🤍'
