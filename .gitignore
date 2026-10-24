@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build / Vite
+dist/
+dist-ssr/
+*.local
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+*~
+
+# Test / coverage
+coverage/
+*.lcov
+
+# TypeScript
+*.tsbuildinfo
+
+# Agent / local scratch (never commit)
+.tmp*
+**/.tmp*
+.cursor/
+
+# Optional: keep local audio/photos out until reviewed
+# Uncomment if you want to force manual staging of media:
+# public/assets/private/
+# src/assets/audio/*.mp3
+# src/assets/images/screenshots/
