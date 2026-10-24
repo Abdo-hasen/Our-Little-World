@@ -1,4 +1,4 @@
-# Our Little World — آية علي
+# Our World — آية علي
 
 Personal cinematic engagement-gift website (Phase 1: static React + Vite).
 

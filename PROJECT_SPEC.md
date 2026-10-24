@@ -1,4 +1,4 @@
-# Our Little World — Aya Ali
+# Our World — Aya Ali
 
 ## Project Specification for Cursor
 
@@ -8,8 +8,8 @@
 
 ## 1. Project Overview
 
-**Project name (working title):** Our Little World — Aya Ali  
-**Logo direction (approved):** A minimal `A²` / `AA` monogram, without a date in the logo. Use it as the site mark/favicon where appropriate. Do not add the engagement date to the logo.  
+**Project name (working title):** Our World — Aya Ali  
+**Logo direction (approved):** Lavender `AA` monogram with the wordmark `OUR WORLD` (no date in the logo). Use it as the site mark/favicon where appropriate. Do not add the engagement date to the logo.  
 **Project type:** Personal cinematic engagement-gift website  
 **Primary recipient:** Aya Ali (آية علي)  
 **Project owner:** Abdelrahman Hasan  
@@ -58,11 +58,9 @@ Never move to the next phase unless the owner explicitly asks. Do not add placeh
 
 ## 3. Approved Design and Experience Direction
 
-- **Visual direction:** Hybrid design — a cinematic opening, followed by warm, memory-focused scenes.
-- **Logo:** Use a clean, elegant `A²` monogram with no date or extra wording inside the logo artwork. The exact logo asset may be supplied separately; until then, create a tasteful text/CSS fallback rather than inventing a different mark.
-- **Approved opening palette:** Deep plum/near-black background, muted mauve, soft lavender, and white. The opening can be dark and cinematic; memory sections can use lighter lavender/white surfaces.
-- **Palette direction (approved):** Cinematic lavender — deep near-black plum, muted mauve, soft lavender, and white. Use lavender and white as the main identity colors; keep the interface elegant, not overly decorated. Avoid the previous burgundy/gold palette.
-- **Typography:** Clear Arabic font with correct RTL support; a complementary English display font may be used for English headings.
+- **Visual direction:** Hybrid design — a soft cinematic opening, followed by warm, memory-focused scenes. Keep the interface elegant and light; avoid near-black full-page backgrounds.
+- **Logo:** Use the supplied lavender `AA` / `OUR WORLD` monogram asset (`public/our-world-monogram.png`). Do not put the engagement date in the logo. Display the mark on a mid-mauve plate (not a flat black square) so the monogram stays readable on the light UI.
+- **Typography:** Clear Arabic font with correct RTL support (Alexandria); a complementary English display font may be used for English headings.
 - **Layout:** Mobile-first, responsive, and optimized for opening through a QR code on a phone.
 - **Navigation:** A guided journey with the ability to revisit previous scenes.
 - **Motion:** Smooth, restrained transitions; respect `prefers-reduced-motion`.
@@ -71,7 +69,37 @@ Never move to the next phase unless the owner explicitly asks. Do not add placeh
 - **Privacy:** Avoid putting sensitive information into publicly accessible static files. Screenshots must be reviewed/redacted by the owner before publishing.
 - **Accessibility:** Keyboard-operable controls, meaningful button labels, visible focus styles, adequate contrast, and accessible audio controls.
 
-Do not copy the reference images or use stock romantic imagery as if it were a real couple memory. Use clearly identified placeholders until the owner provides real assets.
+### Approved color palette — Soft Lavender Mist
+
+**Direction name:** Soft Lavender Mist (light cinematic lavender).  
+**Role:** Primary identity for Scene 1 and the default journey shell. Prefer this light world over the older deep plum / near-black opening.  
+**Do not use:** The previous burgundy/gold palette, or near-black full-bleed page backgrounds.
+
+| Role | Token (CSS) | Hex / value | Notes |
+|---|---|---|---|
+| Page canvas | `--bg-deep` | `#efe6f2` | Soft lavender mist base |
+| Elevated soft surface | `--bg-plum` | `#e4d5e8` | Secondary wash / soft panels |
+| Card surface | `--bg-card` | `rgba(255, 255, 255, 0.72)` | Frosted white card |
+| Card border | `--bg-card-border` | `rgba(110, 70, 115, 0.14)` | Quiet plum edge |
+| Primary text | `--text-primary` | `#3a2440` | Deep plum (titles, name) |
+| Body text | `--text-secondary` | `#5a3d5f` | Readable plum-gray |
+| Muted text | `--text-muted` | `#8a6d8e` | Captions, secondary CTA line |
+| Accent lavender | `--accent-lavender` | `#8b5a8c` | Emphasis / links / highlights |
+| Accent mauve | `--accent-mauve` | `#a76b9e` | Focus rings, accents |
+| Accent glow | `--accent-glow` | `rgba(167, 107, 158, 0.28)` | Soft focus / glow |
+| Primary button start | `--btn-start` | `#a76b9e` | CTA gradient start |
+| Primary button end | `--btn-end` | `#8b5a8c` | CTA gradient end |
+| Input fill | `--input-bg` | `rgba(255, 255, 255, 0.85)` | Date fields |
+| Input border | `--input-border` | `rgba(110, 70, 115, 0.22)` | Date fields |
+| Soft shadow | `--shadow-soft` | `rgba(90, 50, 95, 0.12)` | Elevation |
+
+**Logo plate (Scene 1):** Mid-mauve gradient plate behind the monogram — approximately `#a874a8` → `#7d527d` → `#5c3a5c` — so the lavender AA reads clearly. Do not rely on the asset’s baked-in black field alone.
+
+**Opening atmosphere (Scene 1):** Optional full-bleed abstract atmosphere image (`public/scene1-atmosphere.jpg`) with soft blur + light lavender veil. Abstract / generated atmosphere only — **do not** use real couple photos as the opening background unless the owner explicitly supplies and approves them for that role.
+
+**Source of truth in code:** `src/index.css` (`:root` tokens) and Scene 1 styles in `src/features/journey/scenes/Scene1Key.css`.
+
+Do not copy the reference images or use stock romantic imagery as if it were a real couple memory. Use clearly identified placeholders until the owner provides real assets. For opening atmosphere, prefer abstract Soft Lavender Mist imagery over personal photos unless approved.
 
 ---
 

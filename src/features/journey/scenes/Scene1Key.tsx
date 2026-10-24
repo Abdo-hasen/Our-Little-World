@@ -87,8 +87,8 @@ export function Scene1Key({ onUnlock }: Scene1KeyProps) {
         <header className="scene1__header">
           <div className="scene1__logo-wrapper">
             <img
-              src={`${import.meta.env.BASE_URL}lavender-monogram.png`}
-              alt="A Little World"
+              src={`${import.meta.env.BASE_URL}our-world-monogram.png`}
+              alt="Our World"
               className="scene1__logo"
               width={128}
               height={128}
