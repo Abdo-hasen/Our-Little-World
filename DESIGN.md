@@ -96,11 +96,15 @@ components:
 
 **Creative North Star: "Soft Lavender Mist Letter"**
 
-The product should feel like opening a soft lavender letter under gentle light: frosted glass, quiet gold seals, and restrained cinematic motion. It is intimate and mobile-first — never a dark luxury landing page, never a purple-glow dashboard, never generic stock romance.
+The product should feel like opening a soft lavender letter under gentle light: frosted glass, quiet gold seals, and **cinematic animation as a primary craft pillar**. It is intimate and mobile-first — never a dark luxury landing page, never a purple-glow dashboard, never generic stock romance, never a static brochure with a fade slapped on.
 
-Depth comes from atmosphere (blurred abstract wash + aurora + sparse particles), glass cards, and soft plum shadows. Motion is purposeful: staggered word reveal, breathing logo, shimmer on the gift CTA, sparkle burst on unlock. Always honor `prefers-reduced-motion`.
+**Niche (binding with `PRODUCT.md`):** This visual world exists for a personal cinematic **engagement-gift** journey (شرعي خطوبة), not for wedding websites, RSVP planners, couple social feeds, or generic romance landings. Impeccable craft must deepen that niche — quiet gift letter, guided scenes, keepsake archive — and must not broaden the UI into adjacent product categories. **`/animate`, `/delight`, and motion polish are default expectations**, not optional extras.
+
+Depth comes from atmosphere (blurred abstract wash + aurora + sparse particles), glass cards, soft plum shadows, and **layered motion**. Motion must feel intentional and emotional: staggered word reveal, breathing logo, shimmer on the gift CTA, morphing date gate, sparkle/confetti unlock, scene-to-scene transitions, and interactive feedback on every key control. Always honor `prefers-reduced-motion`.
 
 **Key Characteristics:**
+- Niche-locked: personal engagement gift, not wedding / feed / RSVP product UI
+- **Animation-forward:** every scene ships with purposeful entrances, transitions, and micro-interactions
 - Light Soft Lavender Mist canvas (not near-black)
 - Alexandria body + Aref Ruqaa display
 - Champagne gold as rare accent (dividers, seal, success)
@@ -192,13 +196,33 @@ Soft rounded language: cards `22px`, logo plate `26px`, date inputs `14px`, CTAs
 ### Signature: Scene 1 Key
 Monogram plate + Ruqaa name + gold divider/seal + glass letter with word-by-word reveal + shimmer gift CTA + date gate morph + confetti unlock + zoom-blur exit. No background music track — the only audio is the owner’s final voice recording (visitor-started) at the end of the journey.
 
+## Motion (first-class)
+
+Animation is part of the product identity, not garnish. Prefer `framer-motion` for scene orchestration and CSS for ambient loops (atmosphere, particles, shimmer) when that is lighter.
+
+### Motion vocabulary
+- **Ease cinematic:** `cubic-bezier(0.22, 1, 0.36, 1)` — scene fades, card swaps, unlock exit.
+- **Word stagger:** ~`0.045s` per word — letter reveals (Scene 1 pattern; reuse where copy should feel spoken).
+- **Breathing / float:** slow logo and soft ambient loops (pause under reduced motion).
+- **CTA shimmer:** ~`4.2s` light sweep on primary gift actions.
+- **Feedback:** gentle shake on date error; gold success glow; confetti/sparkle on unlock or celebration beats.
+- **Scene exits / entrances:** short zoom-blur or fade-slide between journey scenes — never a hard cut unless reduced motion.
+
+### Named Rules
+**The Alive-Gift Rule.** A scene is incomplete if content is correct but motion is missing, generic, or only a single opacity fade. Each scene needs at least one memorable motion moment plus calm supporting motion.
+
+**The Calm-Not-Chaotic Rule.** Motion supports reading and emotion; it must not fight the letter body, block taps, or feel like a marketing landing-page gimmick reel.
+
+**The Reduced-Motion Rule.** Honor `prefers-reduced-motion`: skip infinite loops, shimmer, confetti, and heavy exits; keep clear layout and instant (or near-instant) content visibility.
+
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep Soft Lavender Mist tokens in `src/index.css` as the code source of truth.
 - **Do** use Aref Ruqaa for display moments and Alexandria for body/UI.
+- **Do** design and ship animation as a core deliverable for every scene (entrances, transitions, interaction feedback).
 - **Do** respect `prefers-reduced-motion` (skip particles loops, shimmer, confetti, heavy exits).
-- **Do** build mobile-first; verify Scene 1 on a phone-width viewport.
+- **Do** build mobile-first; verify Scene 1 on a phone-width viewport — motion must stay smooth on phone.
 - **Do** keep Soft Lavender Mist tokens, glass cards, and pill CTAs consistent across every scene.
 
 ### Don't:
@@ -207,3 +231,5 @@ Monogram plate + Ruqaa name + gold divider/seal + glass letter with word-by-word
 - **Don't** add a background music track or autoplay any audio.
 - **Don't** use near-black full-page backgrounds or the old burgundy/gold world.
 - **Don't** overload the first viewport with stats, schedules, or multi-card marketing grids.
+- **Don't** treat motion as optional polish after “done” — unfinished animation means unfinished scene.
+- **Don't** restyle or expand the product into wedding-site, RSVP, social-feed, or generic romance-landing patterns — stay in the engagement-gift niche.

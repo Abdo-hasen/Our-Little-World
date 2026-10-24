@@ -10,15 +10,18 @@
 
 **Project name (working title):** Our World — Aya Ali  
 **Logo direction (approved):** Lavender `AA` monogram with the wordmark `OUR WORLD` (no date in the logo). Use it as the site mark/favicon where appropriate. Do not add the engagement date to the logo.  
-**Project type:** Personal cinematic engagement-gift website  
+**Project type:** Personal cinematic engagement-gift website (**animation-forward**)  
+**Niche (binding):** Personal cinematic **engagement-gift** for a شرعي خطوبة — guided memory journey + permanent keepsake archive for one recipient. Stay inside this niche; do not expand into wedding sites, RSVP planners, social feeds, or generic romance products.  
 **Primary recipient:** Aya Ali (آية علي)  
 **Project owner:** Abdelrahman Hasan  
 **Current phase:** Phase 1 — Static React website
 
-The website is a personal, respectful engagement gift. It should feel like a short cinematic journey through real memories, followed by a permanent area for messages and shared memories. The content must feel sincere and personal, not generic or exaggerated.
+The website is a personal, respectful engagement gift. It should feel like a short **cinematic, animated** journey through real memories, followed by a permanent area for messages and shared memories. The owner wants **animation as a core focus** — purposeful motion that makes the gift feel alive (reveals, transitions, micro-interactions, celebration beats), not a static multipage site with light fades. The content must feel sincere and personal, not generic or exaggerated. Product and Impeccable decisions (`PRODUCT.md`, `DESIGN.md`, this file) must keep the experience focused on that niche **and** keep motion craft high.
 
 ### Core principles
 
+- **Niche focus:** Every feature, scene, and visual choice must serve the personal engagement-gift journey. If a request would turn the site into a wedding template, event planner, couple feed, or generic “love story” landing page, refuse or reframe it back to the niche.
+- **Animation focus:** Treat motion as a first-class deliverable. Every scene needs intentional entrances, scene transitions, and interaction feedback. Prefer `framer-motion` + scene CSS. Impeccable `/animate` and motion polish are in scope by default — a scene with correct copy but weak/missing animation is not done.
 - Use real details supplied by the project owner. **Never invent relationship events, dates, quotes, chat messages, feelings, or memories.**
 - The language can mix natural Egyptian Arabic and English when that feels stylish or contextually appropriate. Personal messages should sound like the project owner, not like generic AI-written romance.
 - Keep the tone warm, respectful, sincere, and appropriate for a شرعي engagement. Avoid the word “love” in user-facing romantic copy and avoid wording that assumes the couple is already married.
@@ -36,7 +39,7 @@ Build the cinematic journey and the permanent website area using local/static co
 
 - React + Vite.
 - TypeScript is preferred for maintainable data models; if the repository already uses JavaScript, preserve its established setup unless the owner approves changing it.
-- CSS-based design and animations; use an animation library only if it materially improves the experience.
+- CSS-based design plus **`framer-motion` for cinematic scene animation** (approved stack). Animation is a product requirement, not optional polish.
 - Store editable content separately from presentation components.
 - Use local assets for photos, screenshots, and the final voice message.
 - No backend, Firebase, login system, or admin dashboard.
@@ -62,12 +65,12 @@ Never move to the next phase unless the owner explicitly asks. Do not add placeh
 
 | Concern | Source of truth |
 |---|---|
-| Product purpose, users, constraints, brand voice | `PRODUCT.md` |
-| Visual world, tokens, components, do/don’t | `DESIGN.md` + `.impeccable/design.json` |
+| Niche, product purpose, users, constraints, brand voice, animation priority | `PRODUCT.md` |
+| Visual world, tokens, components, **motion vocabulary**, do/don’t | `DESIGN.md` + `.impeccable/design.json` |
 | Journey scenes, copy approval, delivery phases | This file (`PROJECT_SPEC.md`) |
 | Live CSS tokens | `src/index.css` (`:root`) — keep aligned with `DESIGN.md` |
 
-When using `/impeccable` commands, treat **Soft Lavender Mist Letter** in `DESIGN.md` as the incumbent visual world. Do not invent a competing palette or typography stack.
+When using `/impeccable` commands, treat **Soft Lavender Mist Letter** in `DESIGN.md` as the incumbent visual world. Do not invent a competing palette or typography stack. Keep craft inside the **engagement-gift journey** niche defined in `PRODUCT.md` — Impeccable must not restyle the product into a wedding landing page, RSVP product, or social-feed look. Prefer motion-forward craft (`/animate`, `/delight`, polish) so the gift feels cinematic and alive.
 
 ### Experience rules (product)
 
@@ -76,7 +79,7 @@ When using `/impeccable` commands, treat **Soft Lavender Mist Letter** in `DESIG
 - **Typography:** Body — Alexandria. Display / titles — Aref Ruqaa. Full RTL. Scene 1 letter body uses `--text-primary` for readable weight.
 - **Layout:** Mobile-first; optimized for QR / phone open.
 - **Navigation:** Guided journey; allow revisit of previous scenes.
-- **Motion:** Restrained cinematic motion; respect `prefers-reduced-motion`.
+- **Motion (priority):** Animation-forward cinematic craft — purposeful entrances, transitions, micro-interactions, and celebration moments on every scene. Follow the Motion section in `DESIGN.md`. Respect `prefers-reduced-motion` with calm reduced alternatives.
 - **Audio:** No background music track. The only audio is the owner’s final voice recording at the end of the journey (visitor-started; accessible controls; graceful if missing).
 - **Privacy:** No sensitive data in public static files; owner-redact screenshots before publish.
 - **Accessibility:** Keyboard, labels, focus, contrast, accessible voice controls when present.
@@ -364,7 +367,7 @@ A scene is not complete until:
 - It works on mobile and desktop.
 - Arabic RTL and English text both render correctly.
 - Buttons and interactive elements work with touch and keyboard.
-- Motion is restrained and respects reduced-motion preferences.
+- **Animation is shipped:** at least one memorable motion moment plus supporting entrances/transitions/feedback; motion stays smooth on phone; `prefers-reduced-motion` is honored (no broken or empty reduced path).
 - Images and audio have graceful fallback states.
 - The console has no errors introduced by the scene.
 - The production build succeeds.

@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { scene2Content } from '../../../data/scene2'
 import { MilestoneIcon } from './MilestoneIcon'
 import './Scene2Timeline.css'
@@ -46,11 +46,12 @@ export function Scene2Timeline({ onBack }: Scene2TimelineProps) {
           {scene2Content.milestones.map((milestone, index) => {
             const isOpen = openId === milestone.id
             const detailId = `milestone-detail-${milestone.id}`
+            const gapClass = milestone.gapAfter ? ' scene2__item--gap' : ''
 
             return (
               <motion.li
                 key={milestone.id}
-                className={`scene2__item${isOpen ? ' scene2__item--open' : ''}`}
+                className={`scene2__item${isOpen ? ' scene2__item--open' : ''}${gapClass}`}
                 initial={reduceMotion ? false : { opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -73,26 +74,17 @@ export function Scene2Timeline({ onBack }: Scene2TimelineProps) {
                   <h2 className="scene2__item-title">{milestone.title}</h2>
                   <p className="scene2__summary">{milestone.summary}</p>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.p
-                        id={detailId}
-                        className="scene2__detail"
-                        initial={
-                          reduceMotion ? false : { opacity: 0, height: 0 }
-                        }
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={
-                          reduceMotion
-                            ? { opacity: 0 }
-                            : { opacity: 0, height: 0 }
-                        }
-                        transition={{ duration: 0.28 }}
-                      >
+                  <div
+                    id={detailId}
+                    className={`scene2__detail-slot${isOpen ? ' scene2__detail-slot--open' : ''}`}
+                    hidden={!isOpen}
+                  >
+                    <div className="scene2__detail-inner">
+                      <p className="scene2__detail" aria-hidden={!isOpen}>
                         {milestone.detail}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                      </p>
+                    </div>
+                  </div>
 
                   <button
                     type="button"

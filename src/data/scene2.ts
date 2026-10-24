@@ -9,6 +9,8 @@ export type Scene2Milestone = {
   title: string
   summary: string
   detail: string
+  /** Longer dotted rail gap after this milestone (e.g. multi-year span). */
+  gapAfter?: boolean
 }
 
 /** Approved Scene 2 timeline copy (owner Q&A). */
@@ -46,6 +48,7 @@ export const scene2Content = {
       title: 'أول خطوبة',
       summary: 'أيام كورونا… وفي رمضان ❤️',
       detail: 'ولما أكلتك جاتوه بالشوكة بالعرض 😂',
+      gapAfter: true,
     },
     {
       id: 'second-engagement',
