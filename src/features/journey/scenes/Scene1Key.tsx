@@ -1,7 +1,7 @@
 import { useState, useRef, type ChangeEvent, type FormEvent } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import confetti from 'canvas-confetti'
-import { scene1Content } from '../../../data/scene1'
+import { scene1Content, SKIP_DATE_GATE_FOR_TESTING } from '../../../data/scene1'
 import { WordReveal } from '../WordReveal'
 import { isEngagementDateValid, normalizeDigits } from './scene1Validation'
 import './Scene1Key.css'
@@ -125,6 +125,12 @@ export function Scene1Key({ onUnlock }: Scene1KeyProps) {
   }
 
   const handleOpenGate = () => {
+    // Date gate UI kept below — flip SKIP_DATE_GATE_FOR_TESTING to false to restore.
+    if (SKIP_DATE_GATE_FOR_TESTING) {
+      onUnlock()
+      return
+    }
+
     setStep('gate')
     window.setTimeout(() => {
       dayRef.current?.focus()

@@ -9,7 +9,7 @@ export type JourneySceneMeta = {
 
 /**
  * Scene order from PROJECT_SPEC.md.
- * Only Scene 1 opening copy is approved; UI implementation waits for owner go-ahead.
+ * Scene 1 + Scene 2 content are approved; later scenes wait for owner input.
  */
 export const journeyScenes: JourneySceneMeta[] = [
   {
@@ -20,7 +20,7 @@ export const journeyScenes: JourneySceneMeta[] = [
   {
     id: 'timeline',
     title: 'حكايتنا بالترتيب',
-    contentStatus: 'needs-owner-input',
+    contentStatus: 'approved',
   },
   {
     id: 'qualities',
