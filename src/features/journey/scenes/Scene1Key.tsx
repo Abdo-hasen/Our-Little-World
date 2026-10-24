@@ -77,7 +77,7 @@ export function Scene1Key({ onUnlock }: Scene1KeyProps) {
     <section className="scene1" aria-label="مفتاح عالمكم">
       <div className="scene1__atmosphere" aria-hidden="true">
         <img
-          src="/scene1-atmosphere.jpg"
+          src={`${import.meta.env.BASE_URL}scene1-atmosphere.jpg`}
           alt=""
           className="scene1__atmosphere-img"
         />
@@ -87,7 +87,7 @@ export function Scene1Key({ onUnlock }: Scene1KeyProps) {
         <header className="scene1__header">
           <div className="scene1__logo-wrapper">
             <img
-              src="/lavender-monogram.png"
+              src={`${import.meta.env.BASE_URL}lavender-monogram.png`}
               alt="A Little World"
               className="scene1__logo"
               width={128}
