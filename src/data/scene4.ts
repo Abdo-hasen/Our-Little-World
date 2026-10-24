@@ -59,12 +59,12 @@ export const scene4Content = {
   nextLabel: 'كمّلي الرحلة',
   senderLabel: 'آية',
   categories: [
-    { id: 'reunion', label: 'فرحة رجوعنا', icon: 'reunion' },
-    { id: 'clarity', label: 'شايفاني بوضوح', icon: 'clarity' },
-    { id: 'days', label: 'تفاصيل يومنا', icon: 'days' },
-    { id: 'gratitude', label: 'دعاء وامتنان', icon: 'gratitude' },
-    { id: 'playful', label: 'اللعب والنكت', icon: 'playful' },
-    { id: 'occasion', label: 'يوم هاجر', icon: 'occasion' },
+    { id: 'reunion', label: 'هدية رجوعنا 🎁', icon: 'reunion' },
+    { id: 'clarity', label: 'شايفاني ازاي ؟ 👀', icon: 'clarity' },
+    { id: 'days', label: 'مراجعة خروجات ☕', icon: 'days' },
+    { id: 'gratitude', label: 'دعاء وامتنان 🤲', icon: 'gratitude' },
+    { id: 'playful', label: 'كووول مع حماتي 😂', icon: 'playful' },
+    { id: 'occasion', label: 'كتب كتاب هاجر 💍', icon: 'occasion' },
   ] satisfies Scene4Category[],
   threads: [
     {
