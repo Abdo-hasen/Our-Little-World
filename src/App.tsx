@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Scene1Key } from './features/journey/scenes/Scene1Key'
 import { Scene2Timeline } from './features/journey/scenes/Scene2Timeline'
 import { Scene3Qualities } from './features/journey/scenes/Scene3Qualities'
+import { Scene4Messages } from './features/journey/scenes/Scene4Messages'
 import type { JourneySceneId } from './types/content'
 
 function App() {
@@ -29,6 +30,13 @@ function App() {
           <Scene3Qualities
             key="qualities"
             onBack={() => setActiveScene('timeline')}
+            onNext={() => setActiveScene('messages')}
+          />
+        )}
+        {activeScene === 'messages' && (
+          <Scene4Messages
+            key="messages"
+            onBack={() => setActiveScene('qualities')}
           />
         )}
       </AnimatePresence>

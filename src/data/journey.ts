@@ -9,7 +9,7 @@ export type JourneySceneMeta = {
 
 /**
  * Scene order from PROJECT_SPEC.md.
- * Scenes 1–3 content are approved; later scenes wait for owner input.
+ * Scenes 1–3 content are approved; Scene 4 is draft (owner review).
  */
 export const journeyScenes: JourneySceneMeta[] = [
   {
@@ -30,7 +30,7 @@ export const journeyScenes: JourneySceneMeta[] = [
   {
     id: 'messages',
     title: 'رسائل غيرت يومي',
-    contentStatus: 'needs-owner-input',
+    contentStatus: 'draft',
   },
   {
     id: 'secret',
