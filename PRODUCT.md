@@ -54,7 +54,7 @@ A sincere, respectful cinematic engagement-gift website: a guided journey throug
 
 - **Name:** Our World — Aya Ali.
 - **Logo:** Lavender `AA` / `OUR WORLD` monogram (`public/our-world-monogram.png`). No engagement date in the logo.
-- **Voice:** Warm, respectful, sincere; Egyptian Arabic + English when stylish. Avoid the word “love” in user-facing romantic copy; avoid wording that assumes the couple is already married.
+- **Voice:** Warm, respectful, sincere; Egyptian Arabic + English when stylish. Light emoji accents with scene copy (see `PROJECT_SPEC.md` Core principles). Avoid the word “love” in user-facing romantic copy; avoid wording that assumes the couple is already married.
 - **Binding docs:** `PROJECT_SPEC.md` (journey scope + scene order), `DESIGN.md` (visual system), this file (product truth).
 
 ## Evidence on Hand

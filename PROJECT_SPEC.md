@@ -25,6 +25,7 @@ The website is a personal, respectful engagement gift. It should feel like a sho
 - **Motion Contract (binding):** A scene is not delivered until it passes the full **Motion Contract** checklist in `DESIGN.md` (entrance, content reveal, scroll reveal where relevant, signature moment, interaction feedback, ambient, exit/transition, reduced-motion path). A static scene with only a single opacity fade is rejected.
 - Use real details supplied by the project owner. **Never invent relationship events, dates, quotes, chat messages, feelings, or memories.**
 - The language can mix natural Egyptian Arabic and English when that feels stylish or contextually appropriate. Personal messages should sound like the project owner, not like generic AI-written romance.
+- **Emojis with copy (binding):** User-facing scene copy uses light emoji accents with the Arabic text (headlines, summaries, details) — playful and personal, not decorative spam. Prefer about **1 emoji per short line** (up to **2** on a longer detail). Never invent events just to justify an emoji; match the approved wording. Owner may remove any emoji before approval. Do not confuse emoji accents with UI icons (timeline markers are custom SVG in `MilestoneIcon`, not Font Awesome / emoji).
 - Keep the tone warm, respectful, sincere, and appropriate for a شرعي engagement. Avoid the word “love” in user-facing romantic copy and avoid wording that assumes the couple is already married.
 - Build incrementally: **one scene at a time**, with the project owner reviewing and approving each scene before implementation moves forward.
 - Do not implement the whole journey in one large, unreviewed pass.
@@ -165,6 +166,8 @@ The cinematic journey consists of the following scenes. The scene content must b
 
 **Motion:** Signature = timeline progress line fills on scroll. Supporting = card scroll-reveal (`whileInView`), icon pulse/glow when in view, accordion expand/collapse, category chip + watermark enrichment, gold ceremonial accent on engagement milestones. Reduced-motion = full rail visible, no pulse, accordion without motion. Must pass Motion Contract in `DESIGN.md`.
 
+**Copy + emojis:** Approved Scene 2 wording lives in `src/data/scene2.ts` with light emoji accents on the headline, subhead, and each milestone summary/detail. Timeline marker icons remain custom SVG (`MilestoneIcon`), separate from emoji in the text.
+
 Use a timeline with **4–6 milestones**. Each milestone may include:
 
 - A real photo or an owner-approved placeholder.
@@ -291,7 +294,7 @@ For **each scene**, follow these steps:
 1. **Ask before drafting:** Ask a small batch of focused questions about that scene. Use multiple-choice questions where useful, with a few plausible answer choices and an “Other / I’ll explain” option.
 2. **Give a rationale:** After each question or group of questions, briefly explain why the answer matters and how it affects the story, tone, visual treatment, or assets needed.
 3. **Wait for the owner:** Do not invent missing details or draft a supposedly factual memory before the owner answers.
-4. **Draft the content:** Use natural Egyptian Arabic and English where each language feels appropriate and stylish. Do not force English into intimate personal copy if Egyptian Arabic sounds more genuine.
+4. **Draft the content:** Use natural Egyptian Arabic and English where each language feels appropriate and stylish. Do not force English into intimate personal copy if Egyptian Arabic sounds more genuine. Include light emoji accents with the copy (see Core principles); propose them for owner review, then put approved text + emojis in the scene data file.
 5. **Show for review:** Present the draft and ask the owner to approve or edit it.
 6. **Record approved content:** Only after approval, place the content in the relevant local data file and mark the scene’s content as approved.
 7. **Implement one scene:** Build only the currently approved scene, plus the minimum navigation needed to test it. Implement Motion Contract layers (not content-only).

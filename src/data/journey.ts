@@ -9,7 +9,7 @@ export type JourneySceneMeta = {
 
 /**
  * Scene order from PROJECT_SPEC.md.
- * Scene 1 + Scene 2 content are approved; later scenes wait for owner input.
+ * Scenes 1–3 content are approved; later scenes wait for owner input.
  */
 export const journeyScenes: JourneySceneMeta[] = [
   {
@@ -25,7 +25,7 @@ export const journeyScenes: JourneySceneMeta[] = [
   {
     id: 'qualities',
     title: 'حاجات بحبها فيكي',
-    contentStatus: 'needs-owner-input',
+    contentStatus: 'approved',
   },
   {
     id: 'messages',

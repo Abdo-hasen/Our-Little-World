@@ -21,11 +21,12 @@ export type Scene2Milestone = {
 export const scene2Content = {
   status: 'approved' as ContentStatus,
   sceneTitle: 'حكايتنا بالترتيب',
-  headline: 'بلوكين… وخطوبتين 😂',
-  subhead: 'وفاضل أوّل وآخر جواز… بعون الله ❤️😂',
+  headline: 'بلوكين… وخطوبتين 😂💍',
+  subhead: 'وفاضل أوّل وآخر جواز… بعون الله 💍🤲',
   expandLabel: 'اقرأ المزيد',
   collapseLabel: 'اخفي التفاصيل',
   backLabel: 'السابق',
+  nextLabel: 'كمّلي الرحلة',
   milestones: [
     {
       id: 'first-chat',
@@ -33,9 +34,9 @@ export const scene2Content = {
       categoryLabel: 'شات',
       dateLabel: '٢٠١٩',
       title: 'أول مرة نتكلم',
-      summary: 'اتكلّمنا شات عشان امتحان مادة أطفال 🤓',
+      summary: 'اتكلّمنا شات عشان امتحان مادة أطفال 🤓📚',
       detail:
-        'سألتك: الطفل بيبدأ يشتم من إمتى؟ من كتر تفاصيل «طفل بيعمل إيه و إمتى»… 😂',
+        'سألتك: الطفل بيبدأ يشتم من إمتى؟ من كتر تفاصيل «طفل بيعمل إيه و إمتى»… 😂👶',
     },
     {
       id: 'first-home',
@@ -43,7 +44,7 @@ export const scene2Content = {
       categoryLabel: 'بيت',
       dateLabel: '٥ مايو ٢٠٢٠',
       title: 'أول مرة بيت',
-      summary: 'بسطتيني، ولبّستي جيبة بدل بنطلون ❤️',
+      summary: 'بسطتيني، ولبّستي جيبة بدل بنطلون 👗❤️',
       detail:
         'ومحدّش سابنا أصلًا في أوضة… فما عرفناش نتكلم براحتنا 😅',
     },
@@ -54,8 +55,8 @@ export const scene2Content = {
       ceremonial: true,
       dateLabel: '٦ يونيو ٢٠٢٠ · رمضان',
       title: 'أول خطوبة',
-      summary: 'أيام كورونا… وفي رمضان ❤️',
-      detail: 'ولما أكلتك جاتوه بالشوكة بالعرض 😂',
+      summary: 'أيام كورونا… وفي رمضان 🌙❤️',
+      detail: 'ولما أكلتك جاتوه بالشوكة بالعرض 🍰😂',
       gapAfter: true,
     },
     {
@@ -65,9 +66,9 @@ export const scene2Content = {
       ceremonial: true,
       dateLabel: '١٣ مارس ٢٠٢٦ · رمضان',
       title: 'تاني خطوبة — رسمي',
-      summary: 'تاني مرة في رمضان، والدنيا شتا 😂',
+      summary: 'تاني مرة في رمضان، والدنيا شتا ❄️🌙',
       detail:
-        'ماما والناس متغاظين شوية: مفيش أغاني، وملبّسناش بعض دبل 😂',
+        'ماما والناس متغاظين شوية: مفيش أغاني، وملبّسناش بعض دبل 💍😂',
     },
   ] satisfies Scene2Milestone[],
 } as const

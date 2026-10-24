@@ -13,6 +13,7 @@ import './Scene2Timeline.css'
 
 interface Scene2TimelineProps {
   onBack: () => void
+  onNext?: () => void
 }
 
 function MilestoneItem({
@@ -144,7 +145,7 @@ function MilestoneItem({
   )
 }
 
-export function Scene2Timeline({ onBack }: Scene2TimelineProps) {
+export function Scene2Timeline({ onBack, onNext }: Scene2TimelineProps) {
   const [openId, setOpenId] = useState<string | null>(null)
   const reduceMotion = useReducedMotion()
   const headingId = useId()
@@ -217,9 +218,14 @@ export function Scene2Timeline({ onBack }: Scene2TimelineProps) {
         </div>
 
         <nav className="scene2__nav" aria-label="تنقل الرحلة">
-          <button type="button" className="scene2__btn" onClick={onBack}>
+          <button type="button" className="scene2__btn scene2__btn--ghost" onClick={onBack}>
             {scene2Content.backLabel}
           </button>
+          {onNext ? (
+            <button type="button" className="scene2__btn" onClick={onNext}>
+              {scene2Content.nextLabel}
+            </button>
+          ) : null}
         </nav>
       </div>
     </motion.section>
