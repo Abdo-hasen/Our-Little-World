@@ -34,7 +34,7 @@ export const scene2Content = {
       id: 'first-chat',
       icon: 'chat',
       categoryLabel: 'شات',
-      dateLabel: '٢٠١٩',
+      dateLabel: '2019',
       title: 'أول مرة نتكلم',
       summary: 'اتكلّمنا شات عشان امتحان مادة أطفال 🤓📚',
       detail:
@@ -44,7 +44,7 @@ export const scene2Content = {
       id: 'first-home',
       icon: 'home',
       categoryLabel: 'بيت',
-      dateLabel: '٥ مايو ٢٠٢٠',
+      dateLabel: '5/5/2020',
       title: 'أول مرة بيت',
       summary: 'بسطتيني، ولبّستي جيبة بدل بنطلون 👗❤️',
       detail:
@@ -55,7 +55,7 @@ export const scene2Content = {
       icon: 'ring',
       categoryLabel: 'خطوبة',
       ceremonial: true,
-      dateLabel: '٦ يونيو ٢٠٢٠ · رمضان',
+      dateLabel: '6/6/2020',
       title: 'أول خطوبة',
       summary: 'أيام كورونا… وفي رمضان 🌙❤️',
       detail: 'ولما أكلتك جاتوه بالشوكة بالعرض 🍰😂',
@@ -66,7 +66,7 @@ export const scene2Content = {
       icon: 'rings',
       categoryLabel: 'خطوبة',
       ceremonial: true,
-      dateLabel: '١٣ مارس ٢٠٢٦ · رمضان',
+      dateLabel: '13/3/2026',
       title: 'تاني خطوبة — رسمي',
       summary: 'تاني مرة في رمضان، والدنيا شتا ❄️🌙',
       detail:
