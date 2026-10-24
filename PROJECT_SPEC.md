@@ -26,6 +26,7 @@ The website is a personal, respectful engagement gift. It should feel like a sho
 - Use real details supplied by the project owner. **Never invent relationship events, dates, quotes, chat messages, feelings, or memories.**
 - The language can mix natural Egyptian Arabic and English when that feels stylish or contextually appropriate. Personal messages should sound like the project owner, not like generic AI-written romance.
 - **Emojis with copy (binding):** User-facing scene copy uses light emoji accents with the Arabic text (headlines, summaries, details) — playful and personal, not decorative spam. Prefer about **1 emoji per short line** (up to **2** on a longer detail). Never invent events just to justify an emoji; match the approved wording. Owner may remove any emoji before approval. Do not confuse emoji accents with UI icons (timeline markers are custom SVG in `MilestoneIcon`, not Font Awesome / emoji).
+- **Forbidden emojis (binding):** Never use monkey / ape emojis in any user-facing copy or UI (including 🙈 🙉 🙊 🐵 🐒 and similar). If source chat text includes them, replace with another approved emoji or drop them.
 - Keep the tone warm, respectful, sincere, and appropriate for a شرعي engagement. Avoid the word “love” in user-facing romantic copy and avoid wording that assumes the couple is already married.
 - Build incrementally: **one scene at a time**, with the project owner reviewing and approving each scene before implementation moves forward.
 - Do not implement the whole journey in one large, unreviewed pass.
