@@ -1,0 +1,71 @@
+:root {
+  /* Soft Lavender Mist — lighter cinematic lavender (approved world, lifted) */
+  --font-family: 'Alexandria', 'Segoe UI', Tahoma, 'Noto Sans Arabic', sans-serif;
+  --bg-deep: #efe6f2;
+  --bg-plum: #e4d5e8;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-card-border: rgba(110, 70, 115, 0.14);
+  --text-primary: #3a2440;
+  --text-secondary: #5a3d5f;
+  --text-muted: #8a6d8e;
+  --accent-lavender: #8b5a8c;
+  --accent-mauve: #a76b9e;
+  --accent-glow: rgba(167, 107, 158, 0.28);
+  --logo-plate: #faf6fb;
+  --btn-start: #a76b9e;
+  --btn-end: #8b5a8c;
+  --input-bg: rgba(255, 255, 255, 0.85);
+  --input-border: rgba(110, 70, 115, 0.22);
+  --shadow-soft: rgba(90, 50, 95, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(167, 107, 158, 0.28);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-mauve);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

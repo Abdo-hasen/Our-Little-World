@@ -1,4 +1,5 @@
 # Our Little World — Aya Ali
+
 ## Project Specification for Cursor
 
 > This document is the source of truth for the project scope, experience, content, design direction, and implementation workflow. Follow it before making architectural or visual decisions.
@@ -101,6 +102,7 @@ The cinematic journey consists of the following scenes. The scene content must b
 **Approved engagement date:** `13/03/2026` (13 March 2026). Use this as the date-entry passphrase for the journey. Do not display the date in the logo.
 
 **Opening flow (approved):**
+
 1. Show the `A²` monogram (no date), Aya’s name, and the full approved opening copy on the first screen.
 2. The first screen ends with the call-to-action `يلا نبدأ الرحلة؟` / `افتحي هديتك`.
 3. When pressed, reveal a date-entry prompt **within the same opening scene**; do not navigate to a separate splash page.
@@ -116,6 +118,7 @@ The cinematic journey consists of the following scenes. The scene content must b
 **Purpose:** Tell the story through a small number of meaningful milestones.
 
 Use a timeline with **4–6 milestones**. Each milestone may include:
+
 - A real photo or an owner-approved placeholder.
 - A date, only if known and approved.
 - A short title.
@@ -123,11 +126,20 @@ Use a timeline with **4–6 milestones**. Each milestone may include:
 - An optional “read more” detail view.
 
 **Candidate milestones supplied by the owner:**
-1. أول مرة أشوفك
-2. أول مرة أجيلك بيت
-3. أول خطوبة
-4. تاني خطوبة
-5. جواز — مستنيين
+
+اول مره نتكلم  : 2019 - مش فاكر تاريخ وشهر 
+
+بلوك :  عملنا  بلوك لبعض 
+
+اول مره بيت : 5/5/2020 
+
+اول خطوبه : 6/6/2020 - رمضان 
+
+بلوك 
+
+تانيه خطوبه  : 13/3/2026 - رمضان 
+
+جواز : يمسهل مستيين 
 
 Treat these as milestone labels/candidates, not as complete stories. Do not invent dates, circumstances, or what happened at any milestone. Clarify what “أول خطوبة” and “تاني خطوبة” refer to if needed, using the Q&A workflow.
 
@@ -146,12 +158,14 @@ Treat these as milestone labels/candidates, not as complete stories. Do not inve
 **Purpose:** Highlight selected messages from real conversations and explain why they mattered.
 
 Each item may include:
+
 - An owner-provided, redacted WhatsApp screenshot or an approved recreation of the message.
 - The relevant message or excerpt, only if supplied by the owner.
 - A short caption explaining why it mattered and how the owner felt at the time.
 - A tap/click interaction to reveal the story.
 
 Privacy requirements:
+
 - The owner must review screenshots and remove phone numbers, private details, and unrelated third-party messages before publishing.
 - Do not fabricate chat screenshots or quote messages that the owner has not supplied.
 - Provide a fallback layout if no screenshot is available.
@@ -171,6 +185,7 @@ Privacy requirements:
 **Purpose:** End with hope for the future and a memorable, interactive visual.
 
 **Interaction:**
+
 - Show a small garden.
 - Display a button: `ازرعي وردة`.
 - Each press adds another flower to the garden with a gentle growth animation.
@@ -178,6 +193,7 @@ Privacy requirements:
 - Flower count is a visual interaction, not a promise of permanent server-side storage in Phase 1.
 
 **Final message:**
+
 - Show an owner-approved written closing line and signature.
 - Play the owner’s recorded voice message as the final emotional moment.
 - Pause background music while the voice recording is playing; resume the music when playback ends or is paused/stopped.
@@ -233,6 +249,7 @@ Do not ask all questions for all scenes at once. Do not force the owner to answe
 ### Content approval status
 
 Keep content status explicit, for example:
+
 - `placeholder`
 - `needs-owner-input`
 - `draft`
@@ -274,6 +291,7 @@ src/
 ```
 
 Guidelines:
+
 - Keep text and content data separate from UI components.
 - Use typed models for milestones, cards, messages, coupons, and audio assets if using TypeScript.
 - Use meaningful component names and keep components focused.
@@ -306,6 +324,7 @@ This behavior is explicitly approved and must be implemented correctly.
 ## 9. Quality and Acceptance Criteria
 
 A scene is not complete until:
+
 - Its factual content has been supplied and approved by the owner, or missing details are clearly represented as placeholders.
 - It works on mobile and desktop.
 - Arabic RTL and English text both render correctly.
