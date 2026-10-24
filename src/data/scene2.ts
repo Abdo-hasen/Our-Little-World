@@ -5,6 +5,10 @@ export type MilestoneIconId = 'chat' | 'home' | 'ring' | 'rings'
 export type Scene2Milestone = {
   id: string
   icon: MilestoneIconId
+  /** Short category chip label (شات / بيت / خطوبة). */
+  categoryLabel: string
+  /** Champagne-gold ceremonial accent (engagement milestones). */
+  ceremonial?: boolean
   dateLabel: string
   title: string
   summary: string
@@ -26,6 +30,7 @@ export const scene2Content = {
     {
       id: 'first-chat',
       icon: 'chat',
+      categoryLabel: 'شات',
       dateLabel: '٢٠١٩',
       title: 'أول مرة نتكلم',
       summary: 'اتكلّمنا شات عشان امتحان مادة أطفال 🤓',
@@ -35,6 +40,7 @@ export const scene2Content = {
     {
       id: 'first-home',
       icon: 'home',
+      categoryLabel: 'بيت',
       dateLabel: '٥ مايو ٢٠٢٠',
       title: 'أول مرة بيت',
       summary: 'بسطتيني، ولبّستي جيبة بدل بنطلون ❤️',
@@ -44,6 +50,8 @@ export const scene2Content = {
     {
       id: 'first-engagement',
       icon: 'ring',
+      categoryLabel: 'خطوبة',
+      ceremonial: true,
       dateLabel: '٦ يونيو ٢٠٢٠ · رمضان',
       title: 'أول خطوبة',
       summary: 'أيام كورونا… وفي رمضان ❤️',
@@ -53,6 +61,8 @@ export const scene2Content = {
     {
       id: 'second-engagement',
       icon: 'rings',
+      categoryLabel: 'خطوبة',
+      ceremonial: true,
       dateLabel: '١٣ مارس ٢٠٢٦ · رمضان',
       title: 'تاني خطوبة — رسمي',
       summary: 'تاني مرة في رمضان، والدنيا شتا 😂',

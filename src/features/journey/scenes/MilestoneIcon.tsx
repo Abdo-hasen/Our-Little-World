@@ -3,15 +3,20 @@ import type { MilestoneIconId } from '../../../data/scene2'
 interface MilestoneIconProps {
   id: MilestoneIconId
   className?: string
+  size?: number
 }
 
 /** Expressive SVG shapes — placeholders until owner photos exist. */
-export function MilestoneIcon({ id, className }: MilestoneIconProps) {
+export function MilestoneIcon({
+  id,
+  className,
+  size = 28,
+}: MilestoneIconProps) {
   const common = {
     className,
     viewBox: '0 0 48 48',
-    width: 28,
-    height: 28,
+    width: size,
+    height: size,
     fill: 'none',
     stroke: 'currentColor',
     strokeWidth: 1.75,

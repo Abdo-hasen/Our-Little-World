@@ -96,6 +96,11 @@
   box-shadow: 0 0 0 3px var(--accent-gold-soft);
 }
 
+.scene2__rail-wrap {
+  --marker-col: 3.25rem;
+  position: relative;
+}
+
 .scene2__rail {
   list-style: none;
   margin: 0;
@@ -106,13 +111,43 @@
   position: relative;
 }
 
+.scene2__rail-track {
+  position: absolute;
+  inset-inline-start: calc(var(--marker-col) / 2);
+  top: 1.55rem;
+  bottom: 1.55rem;
+  width: 2px;
+  transform: translateX(50%);
+  border-radius: 9999px;
+  background: rgba(167, 107, 158, 0.18);
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+[dir='rtl'] .scene2__rail-track {
+  transform: translateX(-50%);
+}
+
+.scene2__rail-progress {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  background: linear-gradient(
+    180deg,
+    rgba(167, 107, 158, 0.75) 0%,
+    rgba(201, 164, 108, 0.7) 100%
+  );
+  border-radius: inherit;
+}
+
 .scene2__item {
-  --marker-col: 3.25rem;
   display: grid;
   grid-template-columns: var(--marker-col) 1fr;
   gap: 0.85rem;
   position: relative;
   padding-bottom: 1.35rem;
+  z-index: 1;
 }
 
 .scene2__item:last-child {
@@ -123,29 +158,21 @@
   padding-bottom: 3rem;
 }
 
-.scene2__item:not(:last-child)::before {
+.scene2__item--gap::after {
   content: '';
   position: absolute;
   inset-inline-start: calc(var(--marker-col) / 2);
-  top: 3.1rem;
-  bottom: 0;
-  width: 2px;
-  transform: translateX(50%);
-  background: linear-gradient(
-    180deg,
-    rgba(167, 107, 158, 0.45),
-    rgba(201, 164, 108, 0.28)
-  );
-}
-
-[dir='rtl'] .scene2__item:not(:last-child)::before {
-  transform: translateX(-50%);
-}
-
-.scene2__item--gap:not(:last-child)::before {
-  background: none;
-  border-inline-start: 2px dotted rgba(167, 107, 158, 0.4);
+  top: calc(100% - 2.55rem);
+  height: 1.9rem;
   width: 0;
+  transform: translateX(50%);
+  border-inline-start: 2px dotted rgba(167, 107, 158, 0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+
+[dir='rtl'] .scene2__item--gap::after {
+  transform: translateX(-50%);
 }
 
 .scene2__marker {
@@ -168,15 +195,29 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.75);
   position: relative;
   z-index: 1;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease,
-    border-color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.scene2__item--active .scene2__icon-plate {
+  color: #fff;
+  background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
+  border-color: transparent;
+}
+
+.scene2__item--ceremonial.scene2__item--active .scene2__icon-plate {
+  background: linear-gradient(135deg, #d4b078, #c9a46c 55%, #b89055);
+  color: #3a2440;
 }
 
 .scene2__item--open .scene2__icon-plate {
   color: #fff;
   background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
   border-color: transparent;
-  transform: scale(1.06);
+}
+
+.scene2__item--ceremonial.scene2__item--open .scene2__icon-plate {
+  background: linear-gradient(135deg, #d4b078, #c9a46c 55%, #b89055);
+  color: #3a2440;
 }
 
 .scene2__icon {
@@ -192,6 +233,28 @@
   -webkit-backdrop-filter: blur(18px) saturate(1.3);
   box-shadow: 0 14px 32px var(--shadow-soft);
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.scene2__item--active .scene2__card {
+  box-shadow:
+    0 16px 36px var(--shadow-soft),
+    0 0 0 1px rgba(167, 107, 158, 0.08);
+}
+
+.scene2__item--ceremonial .scene2__card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 252, 255, 0.72) 0%,
+      rgba(255, 248, 236, 0.55) 100%
+    );
+}
+
+.scene2__item--ceremonial.scene2__item--active .scene2__card {
+  box-shadow:
+    0 16px 36px rgba(201, 164, 108, 0.16),
+    0 0 0 1px rgba(201, 164, 108, 0.12);
 }
 
 .scene2__card::before {
@@ -212,6 +275,68 @@
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   pointer-events: none;
+  z-index: 1;
+}
+
+.scene2__item--ceremonial .scene2__card::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(201, 164, 108, 0.7),
+    rgba(184, 144, 85, 0.45)
+  );
+}
+
+.scene2__watermark {
+  position: absolute;
+  inset-inline-end: -0.35rem;
+  bottom: -0.55rem;
+  color: var(--accent-lavender);
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 0;
+}
+
+.scene2__item--ceremonial .scene2__watermark {
+  color: var(--accent-gold);
+  opacity: 0.1;
+}
+
+.scene2__watermark-icon {
+  display: block;
+  width: 6.75rem;
+  height: 6.75rem;
+}
+
+.scene2__card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 0.15rem;
+}
+
+.scene2__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent-lavender);
+  background: rgba(167, 107, 158, 0.12);
+  border: 1px solid rgba(167, 107, 158, 0.18);
+}
+
+.scene2__item--ceremonial .scene2__chip {
+  color: #8a6a35;
+  background: rgba(201, 164, 108, 0.16);
+  border-color: rgba(201, 164, 108, 0.32);
 }
 
 .scene2__date {
@@ -220,10 +345,13 @@
   font-weight: 600;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
+  text-align: end;
 }
 
 .scene2__item-title {
-  margin: 0.3rem 0 0.5rem;
+  position: relative;
+  z-index: 1;
+  margin: 0.35rem 0 0.5rem;
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 4.5vw, 1.55rem);
   font-weight: 700;
@@ -233,6 +361,8 @@
 
 .scene2__summary,
 .scene2__detail {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-size: 0.98rem;
   line-height: 1.85;
@@ -240,9 +370,11 @@
 }
 
 .scene2__detail-slot {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.28s ease;
+  transition: grid-template-rows 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scene2__detail-slot--open {
@@ -266,12 +398,15 @@
 }
 
 .scene2__expand {
+  position: relative;
+  z-index: 1;
   margin-top: 0.75rem;
   margin-inline-start: -0.75rem;
   min-height: 44px;
   padding: 0.5rem 0.75rem;
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   border: none;
   background: transparent;
   color: var(--accent-lavender);
@@ -284,8 +419,24 @@
   transition: color 0.2s ease;
 }
 
+.scene2__item--ceremonial .scene2__expand {
+  color: #9a7540;
+  text-decoration-color: rgba(201, 164, 108, 0.45);
+}
+
 .scene2__expand:hover {
   color: var(--accent-mauve);
+}
+
+.scene2__item--ceremonial .scene2__expand:hover {
+  color: #7a5c2e;
+}
+
+.scene2__expand-arrow {
+  display: inline-flex;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
 }
 
 .scene2__nav {
@@ -317,22 +468,30 @@
 }
 
 @media (min-width: 480px) {
-  .scene2__item {
+  .scene2__rail-wrap {
     --marker-col: 3.5rem;
+  }
+
+  .scene2__item {
     gap: 1.1rem;
+  }
+
+  .scene2__watermark-icon {
+    width: 7.5rem;
+    height: 7.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scene2__item--open .scene2__icon-plate {
-    transform: none;
-  }
-
   .scene2__detail-slot {
     transition: none;
   }
 
   .scene2__btn:hover {
     transform: none;
+  }
+
+  .scene2__rail-progress {
+    transform: scaleY(1) !important;
   }
 }
