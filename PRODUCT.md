@@ -34,7 +34,7 @@ A sincere, respectful cinematic engagement-gift website: a guided journey throug
 
 ## Operating Context
 
-- Mobile-first; first open is usually on a phone.
+- Mobile-first; first open is usually on a phone (often via QR). Primary device is mid-range Android — motion must stay smooth (~60fps) without jank.
 - Cinematic journey scenes in approved order; permanent archive is a separate area reachable after the final scene.
 - **Motion-forward:** Every scene ships with intentional animation (entrances, transitions, interactive feedback). Prefer `framer-motion` + scene CSS; polish motion before treating a scene as “done.”
 - Content is developed scene-by-scene with owner Q&A; invented relationship facts are forbidden.
@@ -69,11 +69,17 @@ A sincere, respectful cinematic engagement-gift website: a guided journey throug
 
 1. **Stay in the niche** — every scene, archive section, and visual choice serves the personal engagement-gift journey; reject features that would make it feel like a wedding site, feed, or generic romance product.
 2. **Animation is the craft** — motion is not optional decoration; it carries emotion between moments. Ship purposeful cinematic animation for every scene and key interaction; Impeccable `/animate` and motion polish are in-scope by default.
-3. **Real details only** — never invent relationship events, dates, quotes, or memories.
-4. **One scene at a time** — owner review gates implementation progress.
-5. **Mobile gift first** — design and motion must stay readable, smooth, and calm on a phone (no jank, no motion that blocks reading).
-6. **Respectful tone** — شرعي engagement warmth; no generic AI romance.
-7. **Static Phase 1** — no backend; structure for future dynamic content without a rewrite.
+3. **Motion Contract** — every Screen/Scene must pass the **Motion Contract** checklist in `DESIGN.md` before it is considered Done. A static scene with only a single opacity fade is rejected.
+4. **Real details only** — never invent relationship events, dates, quotes, or memories.
+5. **One scene at a time** — owner review gates implementation progress.
+6. **Mobile gift first** — design and motion must stay readable, smooth, and calm on a phone (no jank, no motion that blocks reading).
+7. **Respectful tone** — شرعي engagement warmth; no generic AI romance.
+8. **Static Phase 1** — no backend; structure for future dynamic content without a rewrite.
+
+## Anti-references (do not ship as)
+
+- Wedding website template, RSVP / event planner, couple social feed, dating-app UI, generic “love story” landing, marketplace gift builder.
+- **Static brochure scene** — correct copy with one fade-in and no signature moment, no interaction feedback, and no reduced-motion path.
 
 ## Accessibility & Inclusion
 

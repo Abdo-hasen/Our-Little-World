@@ -22,7 +22,7 @@ export const scene2Content = {
   status: 'approved' as ContentStatus,
   sceneTitle: 'حكايتنا بالترتيب',
   headline: 'بلوكين… وخطوبتين 😂',
-  subhead: 'وفاضل أوّل وآخر جواز… بعون الله ❤️',
+  subhead: 'وفاضل أوّل وآخر جواز… بعون الله ❤️😂',
   expandLabel: 'اقرأ المزيد',
   collapseLabel: 'اخفي التفاصيل',
   backLabel: 'السابق',
@@ -35,7 +35,7 @@ export const scene2Content = {
       title: 'أول مرة نتكلم',
       summary: 'اتكلّمنا شات عشان امتحان مادة أطفال 🤓',
       detail:
-        'سألتك: الطفل بيبدأ يشتم من إمتى؟ ومن كتر تفاصيل «طفل بيعمل إيه إمتى»… 😂',
+        'سألتك: الطفل بيبدأ يشتم من إمتى؟ من كتر تفاصيل «طفل بيعمل إيه و إمتى»… 😂',
     },
     {
       id: 'first-home',

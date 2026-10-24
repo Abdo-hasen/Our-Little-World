@@ -82,6 +82,14 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.md}"
     padding: "1.35rem 1.25rem"
+  timeline-card:
+    backgroundColor: "{colors.bg-card}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.md}"
+    padding: "1.05rem 1.1rem"
+    notes: "Category chip + watermark icon + optional ceremonial gold; accordion detail"
+  timeline-rail:
+    notes: "Continuous rail with scroll-driven progress fill; marker nodes pulse in view"
   input-date:
     backgroundColor: "{colors.input-bg}"
     textColor: "{colors.text-primary}"
@@ -215,14 +223,67 @@ Animation is part of the product identity, not garnish. Prefer `framer-motion` f
 
 **The Reduced-Motion Rule.** Honor `prefers-reduced-motion`: skip infinite loops, shimmer, confetti, and heavy exits; keep clear layout and instant (or near-instant) content visibility.
 
+## Motion Contract
+
+**Binding.** A scene is not Done until every item below is satisfied (or explicitly N/A with rationale). Applies to every journey scene and permanent-area screen. Palette, typography, and niche stay unchanged — this contract only raises the motion bar.
+
+### A. Required Layers (checklist)
+
+1. **Entrance** — Scene shell enters with fade + y-slide (≤16px) or zoom-blur, using ease cinematic `cubic-bezier(0.22, 1, 0.36, 1)`.
+2. **Content Reveal** — Stagger header → body → CTA. Long copy uses word/line stagger (`~0.045s` per word where the letter-spoken feel fits).
+3. **Scroll Reveal** — Any list/timeline uses `whileInView` (`once: true`) with total stagger ≤ `0.18s`.
+4. **Signature Moment** — Exactly one memorable motion beat per scene (documented in the per-scene table below). Required, not optional.
+5. **Interaction Feedback** — Every tappable Button/Card has `whileTap` (scale ≈ `0.97–0.985`) plus hover / `:focus-visible` states.
+6. **Ambient (Calm)** — Soft background or icon presence (breathing / glow). Loops only when slow; pause under reduced motion.
+7. **Exit / Transition** — Scene changes use `AnimatePresence` (or equivalent). No hard cut unless reduced motion.
+
+### B. Card Enrichment Rule
+
+Any content Card must include **at least 3** of: Category Chip, Watermark Icon (opacity ~6–10%), type Accent, Icon/Illustration, Gradient edge. Champagne gold only for ceremonial moments (Rare Gold Rule).
+
+### C. Motion Budget (Performance)
+
+- Animate **`transform` + `opacity` only**. Do not animate `width` / `height` / `top` / `left` (exception: `grid-template-rows` for accordion expand/collapse).
+- Do not animate `backdrop-filter`.
+- Cap visible simultaneous motion: **1 Signature + 2–3 Supporting** per viewport.
+- Durations: micro `0.15–0.28s` · reveal `0.45–0.6s` · scene transition `0.5–0.8s` · ambient `≥3s`.
+- Target ~60fps on mid-range Android (primary gift open via QR / phone).
+
+### D. Reduced Motion Contract
+
+- Call `useReducedMotion()` in every scene.
+- When true: `initial={false}`; disable loops, shimmer, confetti, parallax; content visible immediately.
+- Progress / state indicators remain visible in a static form (e.g. full timeline rail).
+
+### E. Accessibility
+
+- Motion must not hide content or block taps.
+- Touch targets ≥ `44px`.
+- Expand/collapse controls use `aria-expanded` + `aria-controls`.
+
+### F. Per-Scene Motion Table
+
+Update this table whenever a scene’s signature moment is approved or changes.
+
+| Scene | Signature Moment | Supporting | Reduced-motion fallback |
+|---|---|---|---|
+| 1 Key | Word reveal + confetti unlock | Logo breathing, CTA shimmer, date morph, zoom-blur exit | Static letter; instant content; no confetti/shimmer |
+| 2 Timeline | Progress line fills on scroll | Scroll-reveal cards, icon pulse/glow, accordion expand, chip + watermark | Full rail visible; no pulse; accordion without motion |
+| 3 Flip cards | 3D flip | Stagger deal-in, tap feedback | Crossfade instead of flip |
+| 4 Messages | Tap-to-reveal story | Stagger list entrance, soft card lift | Instant reveal; no lift |
+| 5 Secret memory | Discovery unlock beat | Hint shake, gentle success glow | Instant answer path; no shake |
+| 6 Final garden | Flower growth on plant | Garden ambient, voice UI feedback, replay CTA | Instant flower add; no growth loop |
+| Archive screens | Define before implementation | Entrances + tap feedback minimum | Instant content |
+
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep Soft Lavender Mist tokens in `src/index.css` as the code source of truth.
 - **Do** use Aref Ruqaa for display moments and Alexandria for body/UI.
 - **Do** design and ship animation as a core deliverable for every scene (entrances, transitions, interaction feedback).
+- **Do** pass the full **Motion Contract** checklist before requesting owner approval.
 - **Do** respect `prefers-reduced-motion` (skip particles loops, shimmer, confetti, heavy exits).
-- **Do** build mobile-first; verify Scene 1 on a phone-width viewport — motion must stay smooth on phone.
+- **Do** build mobile-first; verify every scene on a phone-width viewport — motion must stay smooth on phone.
 - **Do** keep Soft Lavender Mist tokens, glass cards, and pill CTAs consistent across every scene.
 
 ### Don't:
@@ -232,4 +293,5 @@ Animation is part of the product identity, not garnish. Prefer `framer-motion` f
 - **Don't** use near-black full-page backgrounds or the old burgundy/gold world.
 - **Don't** overload the first viewport with stats, schedules, or multi-card marketing grids.
 - **Don't** treat motion as optional polish after “done” — unfinished animation means unfinished scene.
+- **Don't** ship a scene with only a single opacity fade and no signature moment.
 - **Don't** restyle or expand the product into wedding-site, RSVP, social-feed, or generic romance-landing patterns — stay in the engagement-gift niche.

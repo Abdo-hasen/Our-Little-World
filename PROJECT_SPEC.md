@@ -22,6 +22,7 @@ The website is a personal, respectful engagement gift. It should feel like a sho
 
 - **Niche focus:** Every feature, scene, and visual choice must serve the personal engagement-gift journey. If a request would turn the site into a wedding template, event planner, couple feed, or generic “love story” landing page, refuse or reframe it back to the niche.
 - **Animation focus:** Treat motion as a first-class deliverable. Every scene needs intentional entrances, scene transitions, and interaction feedback. Prefer `framer-motion` + scene CSS. Impeccable `/animate` and motion polish are in scope by default — a scene with correct copy but weak/missing animation is not done.
+- **Motion Contract (binding):** A scene is not delivered until it passes the full **Motion Contract** checklist in `DESIGN.md` (entrance, content reveal, scroll reveal where relevant, signature moment, interaction feedback, ambient, exit/transition, reduced-motion path). A static scene with only a single opacity fade is rejected.
 - Use real details supplied by the project owner. **Never invent relationship events, dates, quotes, chat messages, feelings, or memories.**
 - The language can mix natural Egyptian Arabic and English when that feels stylish or contextually appropriate. Personal messages should sound like the project owner, not like generic AI-written romance.
 - Keep the tone warm, respectful, sincere, and appropriate for a شرعي engagement. Avoid the word “love” in user-facing romantic copy and avoid wording that assumes the couple is already married.
@@ -66,7 +67,7 @@ Never move to the next phase unless the owner explicitly asks. Do not add placeh
 | Concern | Source of truth |
 |---|---|
 | Niche, product purpose, users, constraints, brand voice, animation priority | `PRODUCT.md` |
-| Visual world, tokens, components, **motion vocabulary**, do/don’t | `DESIGN.md` + `.impeccable/design.json` |
+| Visual world, tokens, components, **motion vocabulary + Motion Contract**, do/don’t | `DESIGN.md` + `.impeccable/design.json` |
 | Journey scenes, copy approval, delivery phases | This file (`PROJECT_SPEC.md`) |
 | Live CSS tokens | `src/index.css` (`:root`) — keep aligned with `DESIGN.md` |
 
@@ -79,7 +80,7 @@ When using `/impeccable` commands, treat **Soft Lavender Mist Letter** in `DESIG
 - **Typography:** Body — Alexandria. Display / titles — Aref Ruqaa. Full RTL. Scene 1 letter body uses `--text-primary` for readable weight.
 - **Layout:** Mobile-first; optimized for QR / phone open.
 - **Navigation:** Guided journey; allow revisit of previous scenes.
-- **Motion (priority):** Animation-forward cinematic craft — purposeful entrances, transitions, micro-interactions, and celebration moments on every scene. Follow the Motion section in `DESIGN.md`. Respect `prefers-reduced-motion` with calm reduced alternatives.
+- **Motion (priority):** Animation-forward cinematic craft — purposeful entrances, transitions, micro-interactions, and celebration moments on every scene. Follow the **Motion** vocabulary **and Motion Contract** in `DESIGN.md`. Respect `prefers-reduced-motion` with calm reduced alternatives.
 - **Audio:** No background music track. The only audio is the owner’s final voice recording at the end of the journey (visitor-started; accessible controls; graceful if missing).
 - **Privacy:** No sensitive data in public static files; owner-redact screenshots before publish.
 - **Accessibility:** Keyboard, labels, focus, contrast, accessible voice controls when present.
@@ -156,9 +157,13 @@ The cinematic journey consists of the following scenes. The scene content must b
 7. Do not require an account or login.
 8. This static date gate is a playful interaction, not real security. Do not present it as secure authentication or place highly sensitive content behind it.
 
+**Motion:** Signature = word-by-word letter reveal + confetti unlock. Supporting = logo breathing, CTA shimmer, date morph, zoom-blur exit. Reduced-motion = static letter, instant content, no confetti/shimmer. Must pass Motion Contract in `DESIGN.md`.
+
 ### Scene 2 — حكايتنا بالترتيب
 
 **Purpose:** Tell the story through a small number of meaningful milestones.
+
+**Motion:** Signature = timeline progress line fills on scroll. Supporting = card scroll-reveal (`whileInView`), icon pulse/glow when in view, accordion expand/collapse, category chip + watermark enrichment, gold ceremonial accent on engagement milestones. Reduced-motion = full rail visible, no pulse, accordion without motion. Must pass Motion Contract in `DESIGN.md`.
 
 Use a timeline with **4–6 milestones**. Each milestone may include:
 
@@ -190,6 +195,8 @@ Treat these as milestone labels/candidates, not as complete stories. Do not inve
 
 **Purpose:** Show specific, personal details the owner appreciates about Aya.
 
+**Motion:** Signature = 3D flip. Supporting = stagger deal-in, tap feedback. Reduced-motion = crossfade instead of flip. Must pass Motion Contract in `DESIGN.md`.
+
 - Use interactive flip cards.
 - Each card contains one specific detail and a short explanation.
 - Avoid generic traits unless the owner explains exactly how they show up in Aya.
@@ -199,6 +206,8 @@ Treat these as milestone labels/candidates, not as complete stories. Do not inve
 ### Scene 4 — رسائل غيرت يومي
 
 **Purpose:** Highlight selected messages from real conversations and explain why they mattered.
+
+**Motion:** Signature = tap-to-reveal story. Supporting = stagger list entrance, soft card lift. Reduced-motion = instant reveal, no lift. Must pass Motion Contract in `DESIGN.md`.
 
 Each item may include:
 
@@ -217,6 +226,8 @@ Privacy requirements:
 
 **Purpose:** Reveal a real shared memory through a question or a small discovery interaction.
 
+**Motion:** Signature = discovery unlock beat. Supporting = hint shake, gentle success glow. Reduced-motion = instant answer path, no shake. Must pass Motion Contract in `DESIGN.md`.
+
 - Use one short question, clue, or interaction that refers to a real event supplied by the owner.
 - Provide a gentle hint and a retry option.
 - Keep it playful and easy; this should not feel like an exam.
@@ -226,6 +237,8 @@ Privacy requirements:
 ### Scene 6 — مشهد أخير: حاجة لسه هتكبر
 
 **Purpose:** End with hope for the future and a memorable, interactive visual.
+
+**Motion:** Signature = flower growth on plant. Supporting = garden ambient, voice UI feedback, replay CTA. Reduced-motion = instant flower add, no growth loop. Must pass Motion Contract in `DESIGN.md`.
 
 **Interaction:**
 
@@ -250,6 +263,8 @@ Do not write the final spoken message until the owner supplies or approves its w
 ## 5. Permanent Website Area
 
 The permanent area lives within the same website but on a separate page/route from the cinematic journey. It should be reachable from the final scene and from a clear navigation link.
+
+**Motion:** Every archive screen must define its signature moment before implementation and pass the Motion Contract in `DESIGN.md` (minimum: entrances + tap feedback + reduced-motion path).
 
 Planned sections (static content in Phase 1):
 
@@ -279,8 +294,9 @@ For **each scene**, follow these steps:
 4. **Draft the content:** Use natural Egyptian Arabic and English where each language feels appropriate and stylish. Do not force English into intimate personal copy if Egyptian Arabic sounds more genuine.
 5. **Show for review:** Present the draft and ask the owner to approve or edit it.
 6. **Record approved content:** Only after approval, place the content in the relevant local data file and mark the scene’s content as approved.
-7. **Implement one scene:** Build only the currently approved scene, plus the minimum navigation needed to test it.
-8. **Review and test:** Check mobile/desktop layouts, accessibility, audio behavior if relevant, and navigation. Ask for approval before moving on.
+7. **Implement one scene:** Build only the currently approved scene, plus the minimum navigation needed to test it. Implement Motion Contract layers (not content-only).
+8. **Motion review:** Verify on a phone-width viewport and with `prefers-reduced-motion` before requesting owner approval. Confirm the scene’s row in the `DESIGN.md` per-scene motion table.
+9. **Review and test:** Check mobile/desktop layouts, accessibility, audio behavior if relevant, and navigation. Ask for approval before moving on.
 
 ### Questions and rationales
 
@@ -367,10 +383,11 @@ A scene is not complete until:
 - It works on mobile and desktop.
 - Arabic RTL and English text both render correctly.
 - Buttons and interactive elements work with touch and keyboard.
-- **Animation is shipped:** at least one memorable motion moment plus supporting entrances/transitions/feedback; motion stays smooth on phone; `prefers-reduced-motion` is honored (no broken or empty reduced path).
+- **Motion Contract passed:** all seven Required Layers in `DESIGN.md` checked (or N/A with rationale); Card Enrichment Rule met where cards exist; Motion Budget respected; reduced-motion path verified; touch targets ≥ 44px.
+- **Animation is shipped:** at least one memorable signature moment plus supporting entrances/transitions/feedback; motion stays smooth on phone (~60fps target); `prefers-reduced-motion` is honored (no broken or empty reduced path).
 - Images and audio have graceful fallback states.
 - The console has no errors introduced by the scene.
-- The production build succeeds.
+- The production build succeeds and lint is clean.
 - Navigation to the previous/next scene behaves as specified.
 - The owner has reviewed and approved the scene.
 
