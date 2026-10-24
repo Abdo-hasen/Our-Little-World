@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { scene6Content } from '../../../data/scene6'
+import { scene6LetterPoints } from '../../../data/scene6Garden'
 import './Scene6Finale.css'
 
 interface Scene6FinaleProps {
@@ -19,17 +20,25 @@ type FlowerSpot = {
   rotate: number
 }
 
-/** Deterministic layout so up to 100 flowers feel planted, not stacked. */
+function clamp(n: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, n))
+}
+
+/**
+ * First pass draws AYA & ABDO; later taps densify the same letter art (no cap).
+ * Uses physical `left` so English letters stay LTR inside the RTL page.
+ */
 function spotForIndex(index: number): Omit<FlowerSpot, 'id'> {
-  const col = index % 10
-  const row = Math.floor(index / 10) % 10
-  const jitterX = ((index * 37) % 7) - 3
-  const jitterY = ((index * 53) % 5) - 2
-  const left = Math.min(92, Math.max(6, 8 + col * 9 + jitterX))
-  const bottom = Math.min(40, Math.max(6, 6 + row * 3.4 + jitterY * 0.55))
-  const scale = 0.55 + ((index * 17) % 30) / 100
+  const points = scene6LetterPoints
+  const base = points[index % points.length]!
+  const ring = Math.floor(index / points.length)
+  const angle = index * 2.399 + ring * 0.7
+  const radius = ring * 1.15
+  const left = clamp(base.left + Math.cos(angle) * radius, 2, 98)
+  const bottom = clamp(base.bottom + Math.sin(angle) * radius * 0.55, 4, 92)
+  const scale = clamp(0.78 - ring * 0.05 + ((index * 17) % 12) / 100, 0.42, 0.9)
   const variant = (index % 3) as 0 | 1 | 2
-  const rotate = ((index * 13) % 21) - 10
+  const rotate = ((index * 13) % 17) - 8
   return { left, bottom, scale, variant, rotate }
 }
 
@@ -202,11 +211,9 @@ export function Scene6Finale({ onBack, onReplayJourney }: Scene6FinaleProps) {
   const headingId = useId()
   const voicePanelRef = useRef<HTMLDivElement | null>(null)
   const [flowers, setFlowers] = useState<FlowerSpot[]>([])
-  const atCap = flowers.length >= scene6Content.maxFlowers
   const voiceUnlocked = flowers.length >= scene6Content.voiceUnlockAt
 
   const plant = () => {
-    if (atCap) return
     const index = flowers.length
     setFlowers((prev) => [...prev, { id: index + 1, ...spotForIndex(index) }])
   }
@@ -283,11 +290,7 @@ export function Scene6Finale({ onBack, onReplayJourney }: Scene6FinaleProps) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  {scene6Content.flowerCountLabel(
-                    0,
-                    scene6Content.voiceUnlockAt,
-                    scene6Content.maxFlowers,
-                  )}
+                  {scene6Content.flowerCountLabel(0, scene6Content.voiceUnlockAt)}
                 </motion.p>
               ) : null}
             </AnimatePresence>
@@ -299,9 +302,9 @@ export function Scene6Finale({ onBack, onReplayJourney }: Scene6FinaleProps) {
                     key={flower.id}
                     className="scene6__flower"
                     style={{
-                      insetInlineStart: `${flower.left}%`,
+                      left: `${flower.left}%`,
                       bottom: `${flower.bottom}%`,
-                      marginInlineStart: '-1.3rem',
+                      marginLeft: '-0.55rem',
                     }}
                     initial={
                       reduceMotion
@@ -332,7 +335,6 @@ export function Scene6Finale({ onBack, onReplayJourney }: Scene6FinaleProps) {
             {scene6Content.flowerCountLabel(
               flowers.length,
               scene6Content.voiceUnlockAt,
-              scene6Content.maxFlowers,
             )}
           </p>
         </motion.div>
@@ -347,8 +349,7 @@ export function Scene6Finale({ onBack, onReplayJourney }: Scene6FinaleProps) {
             type="button"
             className={`scene6__plant-btn${reduceMotion ? '' : ' scene6__plant-btn--shimmer'}`}
             onClick={plant}
-            disabled={atCap}
-            whileTap={reduceMotion || atCap ? undefined : { scale: 0.97 }}
+            whileTap={reduceMotion ? undefined : { scale: 0.97 }}
           >
             {scene6Content.plantButton}
           </motion.button>

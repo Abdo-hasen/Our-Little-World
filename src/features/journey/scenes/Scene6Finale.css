@@ -123,7 +123,7 @@
 
 .scene6__garden {
   position: relative;
-  height: clamp(11.5rem, 32vw, 14.5rem);
+  height: clamp(14.5rem, 42vw, 18.5rem);
   border-radius: 16px;
   overflow: hidden;
   background:
@@ -166,10 +166,11 @@
 
 .scene6__flower {
   position: absolute;
-  width: 2.65rem;
-  height: 3.4rem;
+  width: 1.15rem;
+  height: 1.5rem;
   transform-origin: 50% 100%;
-  filter: drop-shadow(0 4px 6px rgba(58, 36, 64, 0.18));
+  filter: drop-shadow(0 2px 3px rgba(58, 36, 64, 0.16));
+  pointer-events: none;
 }
 
 .scene6__flower svg {
