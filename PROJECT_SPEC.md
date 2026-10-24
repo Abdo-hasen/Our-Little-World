@@ -58,48 +58,61 @@ Never move to the next phase unless the owner explicitly asks. Do not add placeh
 
 ## 3. Approved Design and Experience Direction
 
-- **Visual direction:** Hybrid design — a soft cinematic opening, followed by warm, memory-focused scenes. Keep the interface elegant and light; avoid near-black full-page backgrounds.
-- **Logo:** Use the supplied lavender `AA` / `OUR WORLD` monogram asset (`public/our-world-monogram.png`). Do not put the engagement date in the logo. Display the mark on a mid-mauve plate (not a flat black square) so the monogram stays readable on the light UI.
-- **Typography:** Clear Arabic font with correct RTL support (Alexandria); a complementary English display font may be used for English headings.
-- **Layout:** Mobile-first, responsive, and optimized for opening through a QR code on a phone.
-- **Navigation:** A guided journey with the ability to revisit previous scenes.
-- **Motion:** Smooth, restrained transitions; respect `prefers-reduced-motion`.
-- **Music:** Background music should start after the visitor explicitly starts the journey, then continue between scenes. **Pause the background music only while the final recorded voice message is playing, and resume it when the voice message ends or is paused/stopped.** Provide a visible music control so the visitor can pause/resume music manually. Do not autoplay audio before a user interaction.
-- **Audio:** The final voice message is the only required spoken-message moment in the cinematic journey. Do not create a separate “voice message” scene.
-- **Privacy:** Avoid putting sensitive information into publicly accessible static files. Screenshots must be reviewed/redacted by the owner before publishing.
-- **Accessibility:** Keyboard-operable controls, meaningful button labels, visible focus styles, adequate contrast, and accessible audio controls.
+### Authority map (Impeccable)
+
+| Concern | Source of truth |
+|---|---|
+| Product purpose, users, constraints, brand voice | `PRODUCT.md` |
+| Visual world, tokens, components, do/don’t | `DESIGN.md` + `.impeccable/design.json` |
+| Journey scenes, copy approval, delivery phases | This file (`PROJECT_SPEC.md`) |
+| Live CSS tokens | `src/index.css` (`:root`) — keep aligned with `DESIGN.md` |
+
+When using `/impeccable` commands, treat **Soft Lavender Mist Letter** in `DESIGN.md` as the incumbent visual world. Do not invent a competing palette or typography stack.
+
+### Experience rules (product)
+
+- **Visual direction:** Soft cinematic opening (Soft Lavender Mist), then warm memory-focused scenes. Light UI only — no near-black full-page backgrounds.
+- **Logo:** Lavender `AA` / `OUR WORLD` monogram (`public/our-world-monogram.png`). No engagement date in the logo. Mid-mauve gradient plate behind the mark.
+- **Typography:** Body — Alexandria. Display / titles — Aref Ruqaa. Full RTL. Scene 1 letter body uses `--text-primary` for readable weight.
+- **Layout:** Mobile-first; optimized for QR / phone open.
+- **Navigation:** Guided journey; allow revisit of previous scenes.
+- **Motion:** Restrained cinematic motion; respect `prefers-reduced-motion`.
+- **Audio:** No background music track. The only audio is the owner’s final voice recording at the end of the journey (visitor-started; accessible controls; graceful if missing).
+- **Privacy:** No sensitive data in public static files; owner-redact screenshots before publish.
+- **Accessibility:** Keyboard, labels, focus, contrast, accessible voice controls when present.
 
 ### Approved color palette — Soft Lavender Mist
 
-**Direction name:** Soft Lavender Mist (light cinematic lavender).  
-**Role:** Primary identity for Scene 1 and the default journey shell. Prefer this light world over the older deep plum / near-black opening.  
-**Do not use:** The previous burgundy/gold palette, or near-black full-bleed page backgrounds.
+**Creative North Star:** Soft Lavender Mist Letter (see `DESIGN.md`).  
+**Do not use:** Previous burgundy/gold palette, or near-black full-bleed page backgrounds.
 
 | Role | Token (CSS) | Hex / value | Notes |
 |---|---|---|---|
 | Page canvas | `--bg-deep` | `#efe6f2` | Soft lavender mist base |
 | Elevated soft surface | `--bg-plum` | `#e4d5e8` | Secondary wash / soft panels |
-| Card surface | `--bg-card` | `rgba(255, 255, 255, 0.72)` | Frosted white card |
-| Card border | `--bg-card-border` | `rgba(110, 70, 115, 0.14)` | Quiet plum edge |
-| Primary text | `--text-primary` | `#3a2440` | Deep plum (titles, name) |
-| Body text | `--text-secondary` | `#5a3d5f` | Readable plum-gray |
-| Muted text | `--text-muted` | `#8a6d8e` | Captions, secondary CTA line |
-| Accent lavender | `--accent-lavender` | `#8b5a8c` | Emphasis / links / highlights |
+| Card surface | `--bg-card` | `rgba(255, 252, 255, 0.68)` | Frosted white card |
+| Card border | `--bg-card-border` | `rgba(110, 70, 115, 0.16)` | Quiet plum edge |
+| Primary text | `--text-primary` | `#3a2440` | Titles + Scene 1 letter body |
+| Supporting text | `--text-secondary` | `#5a3d5f` | Softer supporting copy |
+| Muted text | `--text-muted` | `#6f5073` | Captions, secondary CTA line |
+| Accent lavender | `--accent-lavender` | `#8b5a8c` | Emphasis / links |
 | Accent mauve | `--accent-mauve` | `#a76b9e` | Focus rings, accents |
 | Accent glow | `--accent-glow` | `rgba(167, 107, 158, 0.28)` | Soft focus / glow |
-| Primary button start | `--btn-start` | `#a76b9e` | CTA gradient start |
+| Primary button start | `--btn-start` | `#96598f` | CTA gradient start |
 | Primary button end | `--btn-end` | `#8b5a8c` | CTA gradient end |
 | Input fill | `--input-bg` | `rgba(255, 255, 255, 0.85)` | Date fields |
 | Input border | `--input-border` | `rgba(110, 70, 115, 0.22)` | Date fields |
 | Soft shadow | `--shadow-soft` | `rgba(90, 50, 95, 0.12)` | Elevation |
+| Champagne gold | `--accent-gold` | `#c9a46c` | Dividers, seal, success glow |
+| Gold soft | `--accent-gold-soft` | `rgba(201, 164, 108, 0.45)` | Soft gold accents |
 
-**Logo plate (Scene 1):** Mid-mauve gradient plate behind the monogram — approximately `#a874a8` → `#7d527d` → `#5c3a5c` — so the lavender AA reads clearly. Do not rely on the asset’s baked-in black field alone.
+**Logo plate (Scene 1):** `#a874a8` → `#7d527d` → `#5c3a5c`.
 
-**Opening atmosphere (Scene 1):** Optional full-bleed abstract atmosphere image (`public/scene1-atmosphere.jpg`) with soft blur + light lavender veil. Abstract / generated atmosphere only — **do not** use real couple photos as the opening background unless the owner explicitly supplies and approves them for that role.
+**Opening atmosphere (Scene 1):** `public/scene1-atmosphere.jpg` with blur + lavender veil + aurora/particles. Abstract only unless the owner approves real couple photos for that role.
 
-**Source of truth in code:** `src/index.css` (`:root` tokens) and Scene 1 styles in `src/features/journey/scenes/Scene1Key.css`.
+**Code styles:** `src/index.css` + `src/features/journey/scenes/Scene1Key.css`.
 
-Do not copy the reference images or use stock romantic imagery as if it were a real couple memory. Use clearly identified placeholders until the owner provides real assets. For opening atmosphere, prefer abstract Soft Lavender Mist imagery over personal photos unless approved.
+Do not use stock romantic imagery as if it were a real couple memory. Use clear placeholders until the owner provides real assets.
 
 ---
 
@@ -136,10 +149,9 @@ The cinematic journey consists of the following scenes. The scene content must b
 3. When pressed, reveal a date-entry prompt **within the same opening scene**; do not navigate to a separate splash page.
 4. Prompt copy: `فاكرة التاريخ ده؟` with supporting text `دخّلي تاريخ خطوبتنا عشان نبدأ حكايتنا`.
 5. Use a date input or clearly labelled day/month/year fields. Expected date: `13/03/2026`. Accept equivalent valid date formatting where practical, while interpreting the date as 13 March 2026 (not March 13 in an ambiguous locale).
-6. On a correct answer, start the background music and transition into Scene 2 with a restrained cinematic transition. If the answer is incorrect, show a gentle, non-judgmental retry message and keep the visitor on the same screen.
-7. The visitor must interact with the page before music playback begins, to comply with browser autoplay restrictions.
-8. Do not require an account or login.
-9. This static date gate is a playful interaction, not real security. Do not present it as secure authentication or place highly sensitive content behind it.
+6. On a correct answer, transition into Scene 2 with a restrained cinematic transition. If the answer is incorrect, show a gentle, non-judgmental retry message and keep the visitor on the same screen.
+7. Do not require an account or login.
+8. This static date gate is a playful interaction, not real security. Do not present it as secure authentication or place highly sensitive content behind it.
 
 ### Scene 2 — حكايتنا بالترتيب
 
@@ -223,8 +235,7 @@ Privacy requirements:
 **Final message:**
 
 - Show an owner-approved written closing line and signature.
-- Play the owner’s recorded voice message as the final emotional moment.
-- Pause background music while the voice recording is playing; resume the music when playback ends or is paused/stopped.
+- Play the owner’s recorded voice message as the final emotional moment (visitor-started; no background music track).
 - Include a button to replay the journey from the beginning.
 - Include a way to enter the permanent website area.
 - Replaying the journey must not delete or reset the permanent memories area.
@@ -332,20 +343,16 @@ Guidelines:
 
 ---
 
-## 8. Background Music and Voice Message Behavior
+## 8. Voice Message Behavior
 
 This behavior is explicitly approved and must be implemented correctly.
 
-1. The visitor must perform a deliberate interaction to start the journey before background music begins, because browsers commonly block unrequested audio playback.
-2. Once started, background music continues between scenes and during ordinary scene transitions.
-3. When the final voice recording starts playing, pause the background music and remember whether it was playing.
-4. When the voice recording ends, resume the background music only if it had been playing before the voice message started.
-5. If the visitor manually pauses the music, do not restart it automatically after the voice message.
-6. If the voice message is paused or stopped before it ends, restore background music according to the same prior playback state.
-7. Provide visible controls and accessible labels for music and voice playback.
-8. Handle missing audio files without breaking the scene.
-9. Do not use copyrighted music unless the owner has the rights or permission to use it. Prefer owner-provided, licensed, or otherwise appropriately permitted audio.
-10. Do not autoplay the final voice message; let the visitor start it intentionally.
+1. There is no background music track on the site.
+2. The only audio is the owner’s final voice recording at the end of the journey.
+3. Do not autoplay the voice message; the visitor must start it intentionally.
+4. Provide visible controls and accessible labels for voice playback (play / pause / replay).
+5. Handle a missing voice file without breaking the scene.
+6. Prefer owner-provided, licensed, or otherwise appropriately permitted audio only.
 
 ---
 
@@ -364,7 +371,7 @@ A scene is not complete until:
 - Navigation to the previous/next scene behaves as specified.
 - The owner has reviewed and approved the scene.
 
-For the final scene, also verify the music/voice pause-and-resume behavior.
+For the final scene, also verify the voice message play/pause/replay behavior and graceful missing-file handling.
 
 ---
 

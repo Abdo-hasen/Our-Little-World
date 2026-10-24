@@ -22,7 +22,7 @@ export function Scene2Placeholder({ onBackToStart }: Scene2PlaceholderProps) {
             className="scene2-placeholder__btn"
             onClick={onBackToStart}
           >
-            العودة للمشهد الأول (إعادة التجربة)
+            العودة للبداية
           </button>
         </div>
       </div>
