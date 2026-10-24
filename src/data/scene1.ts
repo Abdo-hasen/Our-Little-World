@@ -4,7 +4,7 @@ import type { ContentStatus } from '../types/content'
  * TEMP testing only — skips the date-gate screen after «افتحي هديتك».
  * Set back to `false` before final publish / when the site is ready.
  */
-export const SKIP_DATE_GATE_FOR_TESTING = true
+export const SKIP_DATE_GATE_FOR_TESTING = false
 
 /** Approved Scene 1 opening copy and date gate from PROJECT_SPEC.md. */
 export const scene1Content = {

@@ -87,7 +87,12 @@ export function Scene1Key({ onUnlock }: Scene1KeyProps) {
     const raw = normalizeDigits(e.target.value).replace(/\D/g, '').slice(0, 2)
     setMonth(raw)
     if (status !== 'idle') setStatus('idle')
-    if (raw.length === 2) {
+    // Advance on "3" (not only "03"): digits 2–9 complete a month in one keystroke;
+    // 0/1 wait for a second digit (01–09, 10–12).
+    const monthNum = Number.parseInt(raw, 10)
+    const monthComplete =
+      raw.length === 2 || (raw.length === 1 && monthNum >= 2 && monthNum <= 9)
+    if (monthComplete) {
       yearRef.current?.focus()
     }
   }
