@@ -56,5 +56,12 @@ export function MilestoneIcon({
           <path d="M24 12l1.8 3.8H30l-3.4 2.6 1.3 4L24 20.2l-3.9 2.2 1.3-4L18 15.8h4.2L24 12z" />
         </svg>
       )
+    case 'crescent':
+      return (
+        <svg {...common}>
+          <path d="M28 10a14 14 0 1 0 0 28 11 11 0 0 1 0-28z" />
+          <path d="M34 14l1.2 2.4 2.6.4-1.9 1.8.5 2.6L34 20l-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z" />
+        </svg>
+      )
   }
 }

@@ -36,16 +36,18 @@ function MilestoneItem({
   })
   const detailId = `milestone-detail-${milestone.id}`
   const ceremonial = Boolean(milestone.ceremonial)
+  const future = Boolean(milestone.future)
 
   const gapClass = milestone.gapAfter ? ' scene2__item--gap' : ''
   const openClass = isOpen ? ' scene2__item--open' : ''
   const activeClass = inView ? ' scene2__item--active' : ''
   const ceremonialClass = ceremonial ? ' scene2__item--ceremonial' : ''
+  const futureClass = future ? ' scene2__item--future' : ''
 
   return (
     <motion.li
       ref={itemRef}
-      className={`scene2__item${openClass}${activeClass}${ceremonialClass}${gapClass}`}
+      className={`scene2__item${openClass}${activeClass}${ceremonialClass}${futureClass}${gapClass}`}
       initial={reduceMotion ? false : { opacity: 0, y: 22 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25, margin: '0px 0px -8% 0px' }}
@@ -66,9 +68,11 @@ function MilestoneItem({
                     scale: [1, 1.08, 1],
                     boxShadow: [
                       '0 8px 20px rgba(90, 50, 95, 0.12)',
-                      ceremonial
-                        ? '0 0 0 6px rgba(201, 164, 108, 0.28), 0 10px 24px rgba(201, 164, 108, 0.22)'
-                        : '0 0 0 6px rgba(167, 107, 158, 0.22), 0 10px 24px rgba(139, 90, 140, 0.2)',
+                      future
+                        ? '0 0 0 6px rgba(201, 164, 108, 0.18), 0 10px 24px rgba(167, 107, 158, 0.16)'
+                        : ceremonial
+                          ? '0 0 0 6px rgba(201, 164, 108, 0.28), 0 10px 24px rgba(201, 164, 108, 0.22)'
+                          : '0 0 0 6px rgba(167, 107, 158, 0.22), 0 10px 24px rgba(139, 90, 140, 0.2)',
                       '0 8px 20px rgba(90, 50, 95, 0.12)',
                     ],
                   }

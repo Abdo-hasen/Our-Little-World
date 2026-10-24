@@ -1,14 +1,16 @@
 import type { ContentStatus } from '../types/content'
 
-export type MilestoneIconId = 'chat' | 'home' | 'ring' | 'rings'
+export type MilestoneIconId = 'chat' | 'home' | 'ring' | 'rings' | 'crescent'
 
 export type Scene2Milestone = {
   id: string
   icon: MilestoneIconId
-  /** Short category chip label (شات / بيت / خطوبة). */
+  /** Short category chip label (شات / بيت / خطوبة / إن شاء الله). */
   categoryLabel: string
   /** Champagne-gold ceremonial accent (engagement milestones). */
   ceremonial?: boolean
+  /** Softer “still ahead” treatment — open marker, dreamier gold. */
+  future?: boolean
   dateLabel: string
   title: string
   summary: string
@@ -69,6 +71,18 @@ export const scene2Content = {
       summary: 'تاني مرة في رمضان، والدنيا شتا ❄️🌙',
       detail:
         'ماما والناس متغاظين شوية: مفيش أغاني، وملبّسناش بعض دبل 💍😂',
+      gapAfter: true,
+    },
+    {
+      id: 'awaiting-marriage',
+      icon: 'crescent',
+      categoryLabel: 'إن شاء الله',
+      ceremonial: true,
+      future: true,
+      dateLabel: 'الجاية',
+      title: 'بانتظار الزواج',
+      summary: 'يامسهّل…فاضل أوّل وآخر جواز 💍🤲',
+      detail: 'بعون الله الأسبوع الجاي 🤍',
     },
   ] satisfies Scene2Milestone[],
 } as const
